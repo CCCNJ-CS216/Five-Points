@@ -1,7 +1,7 @@
 package edu.cccnj.FivePoints;
 
 /**
- * Created by nate on 9/6/15.
+ * The entry point for the Five-points program. Begins the main controller.
  */
 public class Main {
     public static void main(String[] args) {
