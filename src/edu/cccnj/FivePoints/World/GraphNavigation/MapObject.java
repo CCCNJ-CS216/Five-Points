@@ -1,4 +1,4 @@
-package edu.cccnj.FivePoints.World;
+package edu.cccnj.FivePoints.World.GraphNavigation;
 
 import edu.cccnj.FivePoints.General.Pair;
 

@@ -1,5 +1,7 @@
 package edu.cccnj.FivePoints;
-import edu.cccnj.FivePoints.World.*;
+import edu.cccnj.FivePoints.World.GraphNavigation.CoordinateMap;
+import edu.cccnj.FivePoints.World.GraphNavigation.MapObject;
+import edu.cccnj.FivePoints.World.GraphNavigation.Node;
 
 /**
  * The entry point for the Five-points program. Begins the main controller.

@@ -1,4 +1,4 @@
-package edu.cccnj.FivePoints.World;
+package edu.cccnj.FivePoints.World.GraphNavigation;
 
 /**
  * The node is the basic building block of the CoordinateMap.

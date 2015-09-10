@@ -1,7 +1,6 @@
-package edu.cccnj.FivePoints.World;
+package edu.cccnj.FivePoints.World.GraphNavigation;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import edu.cccnj.FivePoints.General.Pair;
 
