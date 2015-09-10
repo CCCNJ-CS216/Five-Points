@@ -63,9 +63,10 @@ public class CoordinateMap {
     }
 
     /**
-     * Empties the coordinate map.
+     * Empties the coordinate map, keeping the dimmensions.
      */
     public void clearCoordinateMap(){
+        activeObjects.clear();
         for(int a = 0; a < map.size(); a++){
             for(int b = 0; b < map.get(0).size(); b++){
                 map.get(a).remove(b);
