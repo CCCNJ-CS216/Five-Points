@@ -6,10 +6,7 @@
     </option>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51c3fb79-4712-4e61-ad13-f42199dddaf3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/cccnj/FivePoints/World/CoordinateMap.java" afterPath="$PROJECT_DIR$/src/edu/cccnj/FivePoints/World/CoordinateMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/edu/cccnj/FivePoints/Main.java" afterPath="$PROJECT_DIR$/src/edu/cccnj/FivePoints/Main.java" />
-    </list>
+    <list default="true" id="51c3fb79-4712-4e61-ad13-f42199dddaf3" name="Default" comment="" />
     <ignored path="Five Points.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
