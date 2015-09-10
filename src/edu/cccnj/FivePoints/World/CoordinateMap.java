@@ -1,6 +1,9 @@
 package edu.cccnj.FivePoints.World;
 
 import java.util.ArrayList;
+import java.util.Map;
+
+import edu.cccnj.FivePoints.General.Pair;
 
 /**
  * CoordinateMap manages a set of nodes that are either occupied or free.
@@ -12,8 +15,12 @@ public class CoordinateMap {
     /**
      * Structure representing the running world.
      */
-    private ArrayList<ArrayList<Node>> map;
+    private ArrayList<ArrayList<Node>> map = new ArrayList<ArrayList<Node>>();
 
+    /**
+     * A list of active MapObjects.
+     */
+    private ArrayList<MapObject> activeObjects = new ArrayList<>();
 
     /**
      * Create and initialize a new CoordinateMap given a square size.
@@ -26,7 +33,7 @@ public class CoordinateMap {
 
         // Iterate across x's
         for(int a = 0; a < sizeX; a++) {
-            // Initialize a new colum at (x,_)
+            // Initialize a new column at (x,_)
             map.add(new ArrayList<Node>());
 
             // Populate column with Empty nodes
@@ -42,6 +49,8 @@ public class CoordinateMap {
      * @param item - The mapObject to insert
      */
     public void insertMapObject(MapObject item){
+        activeObjects.add(item);
+
         for(int a = item.x1 - 1; a < item.x2; a++){
             for(int b = item.y1; b < item.y2; b++){
                 // Remove the old value.
@@ -53,6 +62,39 @@ public class CoordinateMap {
         }
     }
 
+    /**
+     * Empties the coordinate map.
+     */
+    public void clearCoordinateMap(){
+        for(int a = 0; a < map.size(); a++){
+            for(int b = 0; b < map.get(0).size(); b++){
+                map.get(a).remove(b);
+                map.get(a).add(b, Node.Empty);
+            }
+        }
+    }
+
+    /**
+     * Gets references to the MapObjects that are in conflict (i.e, overlapping)
+     * with one another so that the controller can remove them (accident?)
+     * @return a list of conflicting objects
+     */
+    public ArrayList<Pair<MapObject, MapObject>> getConflicting(){ //TODO: Make this less intensive on the CPU or at least multithread it
+        ArrayList<Pair<MapObject, MapObject>> conflicting = new ArrayList<>();
+
+        for(MapObject toTest: activeObjects){
+            for(MapObject testAgainst: activeObjects){
+                // Pass by the same object
+                if(toTest == testAgainst)
+                    continue;
+
+                if(toTest.conflicts(testAgainst))
+                    conflicting.add(new Pair<>(toTest, testAgainst));
+            }
+        }
+
+        return conflicting;
+    }
     /**
      * A textual representation of the coordinateMap
      * @return a string model of the map.

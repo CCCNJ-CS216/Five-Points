@@ -1,5 +1,9 @@
 package edu.cccnj.FivePoints.World;
 
+import edu.cccnj.FivePoints.General.Pair;
+
+import java.util.ArrayList;
+
 /**
  * MapObject is a wrapper-ish class for maintaining an object with
  * definite length and a category defined by World.Node.
@@ -89,6 +93,51 @@ public class MapObject {
         this.checkCoordinates();
     }
 
+
+    /**
+     * Test to see if two MapObjects conflict with one another
+     * @param test1 The first item to test
+     * @param test2 The second item to test
+     * @return true if conflict exists, false otherwise
+     */
+    public static boolean conflicts(MapObject test1, MapObject test2){
+        /* Tests split up for readability */
+        ArrayList<Pair<Integer, Integer>> occupiedByTest1 = test1.occupiedBy();
+        ArrayList<Pair<Integer, Integer>> occupiedByTest2 = test2.occupiedBy();
+
+        for(Pair<Integer, Integer> square1: occupiedByTest1){
+            for(Pair<Integer, Integer> square2: occupiedByTest2){
+                if(square1.equals(square2))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Test to see if this class conflicts with another MapObject
+     * @param toTest the other object to test
+     * @return true if a conflcit exists, false otherwise
+     */
+    public boolean conflicts(MapObject toTest){
+        return this.conflicts(this, toTest);
+    }
+
+    /**
+     * Return the space occupied by this MapObject
+     * @return a list of occupied spaces
+     */
+    public ArrayList<Pair<Integer, Integer>> occupiedBy(){
+        ArrayList<Pair<Integer, Integer>> space = new ArrayList<>();
+
+        for(int a = this.x1; a < this.x2; a++){
+            for(int b = this.y1; b < this.y2; b++){
+                space.add(new Pair<Integer, Integer>(a, b));
+            }
+        }
+
+        return space;
+    }
     /* INTERNAL CLASS CHECKS */
 
     /**
@@ -115,6 +164,7 @@ public class MapObject {
                         "\ny2: " + y2);
         } catch(Exception e) {
             e.printStackTrace(); // TODO: Add throws clause and handle in the controller.
+            System.exit(1);
         }
     }
 
