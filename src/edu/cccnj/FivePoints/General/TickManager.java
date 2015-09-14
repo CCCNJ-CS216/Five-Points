@@ -39,6 +39,22 @@ public class TickManager {
     }
 
     /**
+     * Return the actor object in this TickManager.
+     * @return The Actor
+     */
+    public Actor getActor(){
+        return this.actor;
+    }
+
+    /**
+     * Get the master tick count for this TickManager.
+     * @return
+     */
+    public int getMasterTick(){
+        return masterTick;
+    }
+
+    /**
      * Tick the tickManager, possibly causing the actor to act.
      */
     public void tick(){

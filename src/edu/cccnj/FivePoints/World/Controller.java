@@ -44,4 +44,21 @@ public class Controller {
     public void addActor(Actor actor, int tickEvery){
         actors.add(new TickManager(tickEvery, actor));
     }
+
+    /**
+     * Gets every actor of a certain class type.
+     * @param classType - the type of class to search for
+     * @return A list of all actors of this type.
+     */
+    public ArrayList<Actor> getActors(Class classType){
+
+        ArrayList<Actor> collectedActors = new ArrayList<Actor>();
+
+        for(TickManager tm : actors){
+            if(tm.getActor().getClass() == classType)
+                collectedActors.add(tm.getActor());
+        }
+
+        return collectedActors;
+    }
 }

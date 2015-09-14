@@ -6,6 +6,8 @@ import edu.cccnj.FivePoints.World.GraphNavigation.CoordinateMap;
 import edu.cccnj.FivePoints.World.GraphNavigation.MapObject;
 import edu.cccnj.FivePoints.World.GraphNavigation.Node;
 
+import java.util.ArrayList;
+
 /**
  * The entry point for the Five-points program. Begins the main controller.
  */
@@ -69,6 +71,12 @@ public class Main {
 
         // Add the actor to the controller
         controller.addActor(tomCruise, 500);
+
+        // Search for MyActor actors in the Controller
+        ArrayList<Actor> actorActors = controller.getActors(MyActor.class);
+
+        // Did it find Tom?
+        System.out.println(actorActors.size());
 
         // Start the controller
         controller.start();
