@@ -163,7 +163,7 @@ public class MapObject {
                         "\ny1: " + y1 +
                         "\ny2: " + y2);
         } catch(Exception e) {
-            e.printStackTrace(); // TODO: Add throws clause and handle in the controller.
+            e.printStackTrace(); // TODO: Add throws clause and handle in the controller when we start using CoordinateMap
             System.exit(1);
         }
     }

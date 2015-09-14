@@ -1,4 +1,5 @@
 package edu.cccnj.FivePoints;
+
 import edu.cccnj.FivePoints.General.Actor;
 import edu.cccnj.FivePoints.General.Stack;
 import edu.cccnj.FivePoints.World.Controller;
@@ -13,14 +14,17 @@ import java.util.ArrayList;
  */
 public class Main {
 
-    /**
+        /**
      * Before the sekeleton is fully written, main is going to test (poorly) and demonstrate
      * the ability of implemented objects. Come here as a tutorial
      * @param args
      */
     public static void main(String[] args){
 
-        //Create a new CoordinateMap of size 16, 16
+        // Say that the Controller should tick very often.
+        final long TICK_DELAY = 1;
+
+        // Create a new CoordinateMap of size 16, 16
         CoordinateMap cm = new CoordinateMap(16, 16);
 
         // Make a new car at spot 4 that is 4 long.
@@ -34,6 +38,9 @@ public class Main {
 
         // Add the second car to the CoordinateMap
         cm.insertMapObject(secondCar);
+
+        // See how many cars there are
+        System.out.println(cm.getMapObjects(Node.Car).size());
 
         // Show the entire CoordinateMap
         System.out.println(cm.toString());
@@ -67,9 +74,9 @@ public class Main {
         MyActor tomCruise = new MyActor();
 
         // Make a Controller
-        Controller controller = new Controller();
+        Controller controller = new Controller(TICK_DELAY);
 
-        // Add the actor to the controller
+        // Add the actor to the controller. Every 500 ticks the actor acts.
         controller.addActor(tomCruise, 500);
 
         // Search for MyActor actors in the Controller
@@ -78,8 +85,8 @@ public class Main {
         // Did it find Tom?
         System.out.println(actorActors.size());
 
-        // Start the controller
-        controller.start();
+        // Start the controller in its own thread
+        new Thread(controller).start();
     }
 
 }

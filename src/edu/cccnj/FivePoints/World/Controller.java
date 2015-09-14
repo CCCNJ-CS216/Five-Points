@@ -10,7 +10,13 @@ import java.util.ArrayList;
  *
  * Takes a list of Actors, wraps them in a TickManager, and makes them .act();
  */
-public class Controller {
+public class Controller implements Runnable{
+
+    /**
+     * How long (in milliseconds) each tick
+     * should be from one another.
+     */
+    private long tickDelay;
 
     /**
      * The TickManagers which control the interaction with the world.
@@ -18,19 +24,26 @@ public class Controller {
     private ArrayList<TickManager> actors = new ArrayList<>();
 
     /**
-     * Default constructor.
+     * The delay between each tick, in milliseconds Default: 1000
+     * @param tickDelay
      */
-    public Controller(){
+    public Controller(long tickDelay)
+    {
+        this.tickDelay = tickDelay;
     }
 
-    public void start(){
-        for/*ever*/(; ;) { //  TODO: Make this run on its own thread so we can have a prettier delay in
+    @Override
+    /**
+     * Run the controller
+     */
+    public void run(){
+        for/*ever*/(; ;) {
             for (TickManager a : actors) {
                 a.tick();
                 try {
-                    Thread.sleep(1000); // TODO: DON'T DO THIS ANYMORE
+                    Thread.sleep(tickDelay);
                 } catch (Exception e){
-
+                    System.out.println(e.getStackTrace());
                 }
             }
         }

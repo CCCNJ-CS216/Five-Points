@@ -1,6 +1,8 @@
 package edu.cccnj.FivePoints.World.GraphNavigation;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
 
 import edu.cccnj.FivePoints.General.Pair;
 
@@ -79,7 +81,7 @@ public class CoordinateMap {
      * with one another so that the controller can remove them (accident?)
      * @return a list of conflicting objects
      */
-    public ArrayList<Pair<MapObject, MapObject>> getConflicting(){ //TODO: Make this less intensive on the CPU or at least multithread it
+    public ArrayList<Pair<MapObject, MapObject>> getConflicting(){
         ArrayList<Pair<MapObject, MapObject>> conflicting = new ArrayList<>();
 
         for(MapObject toTest: activeObjects){
@@ -101,22 +103,31 @@ public class CoordinateMap {
      */
     public String toString(){
         String s = new String();
+
         for(int a = 0; a < map.size(); a++){
             for(int b = 0; b < map.get(a).size(); b++){
                 Node currentNode = map.get(a).get(b);
 
-                // TODO: Create final lookup table for this hard-coded values
                 if(currentNode == Node.Car)
                     s += "c";
                 else if(currentNode == Node.Empty)
                     s += "e";
                 else if(currentNode == Node.Lane)
                     s += "l";
+                else if(currentNode == Node.Object)
+                    s += "o";
             }
             s += "\n";
         }
         return s;
     }
 
-    // TODO: Create ways for the controller to individually move MapObjects
+    /**
+     * Move the MapObject a certain amount, based on the pair.
+     * X value is the amount on the X axis, y value is the amount on the Y axis.
+     * @param type - The type of the objects to get.
+     */
+    public ArrayList<MapObject> getMapObjects(Node type) {
+        return new ArrayList(Arrays.asList(activeObjects.stream().filter(m -> m.type == type).toArray()));
+    }
 }
