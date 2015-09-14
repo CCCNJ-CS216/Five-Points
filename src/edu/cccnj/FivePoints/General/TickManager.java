@@ -1,0 +1,62 @@
+package edu.cccnj.FivePoints.General;
+
+/**
+ * TickManagers keep an internal count of a master "tick",
+ * such as one that the controller supplies, and run an action
+ *
+ * every certain number of ticks.
+ */
+public class TickManager {
+    /**
+     * How many ticks to perform an action on.
+     */
+    private int tickThreshold;
+
+    /**
+     * The current tick within the count.
+     */
+    private int currentTick;
+
+    /**
+     * How many ticks have been experienced in the lifetime of this object.
+     */
+    private int masterTick;
+
+    /**
+     * The actor that will act on ticks.
+     */
+    private Actor actor;
+
+    /**
+     * Constructor for TickManager.
+     * @param threshold - How often the TickManager should cause the actor to act.
+     * @param actor - The actor which will do the acting.
+     */
+    public TickManager(int threshold, Actor actor){
+        this.tickThreshold = threshold;
+        this.currentTick = 0;
+        this.actor = actor;
+    }
+
+    /**
+     * Tick the tickManager, possibly causing the actor to act.
+     */
+    public void tick(){
+        // Increment ticks
+        this.currentTick++;
+        this.masterTick++;
+
+        if(currentTick >= tickThreshold) {
+            currentTick = 0;
+            actor.act(masterTick);
+        }
+    }
+
+    /**
+     * Flush the current tick and force an act.
+     */
+    public void forceTick(){
+        this.currentTick = 0;
+        actor.act(masterTick);
+    }
+}

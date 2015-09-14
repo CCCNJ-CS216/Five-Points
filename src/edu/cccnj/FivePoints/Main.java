@@ -1,5 +1,7 @@
 package edu.cccnj.FivePoints;
+import edu.cccnj.FivePoints.General.Actor;
 import edu.cccnj.FivePoints.General.Stack;
+import edu.cccnj.FivePoints.World.Controller;
 import edu.cccnj.FivePoints.World.GraphNavigation.CoordinateMap;
 import edu.cccnj.FivePoints.World.GraphNavigation.MapObject;
 import edu.cccnj.FivePoints.World.GraphNavigation.Node;
@@ -8,9 +10,10 @@ import edu.cccnj.FivePoints.World.GraphNavigation.Node;
  * The entry point for the Five-points program. Begins the main controller.
  */
 public class Main {
+
     /**
-     * Before the controller is fully written, main is going to test (poorly) and demonstrate
-     * the ability of implemented objects.
+     * Before the sekeleton is fully written, main is going to test (poorly) and demonstrate
+     * the ability of implemented objects. Come here as a tutorial
      * @param args
      */
     public static void main(String[] args){
@@ -55,8 +58,20 @@ public class Main {
         // Get that two back
         stack.push(2);
 
-        // Exit the program
-        System.exit(0);
+        // Create an actor implementing class
+        class MyActor implements Actor {public void act(int tick){System.exit(0);}}
+
+        // Instantiate it
+        MyActor tomCruise = new MyActor();
+
+        // Make a Controller
+        Controller controller = new Controller();
+
+        // Add the actor to the controller
+        controller.addActor(tomCruise, 500);
+
+        // Start the controller
+        controller.start();
     }
 
 }
