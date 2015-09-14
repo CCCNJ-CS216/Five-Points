@@ -1,4 +1,5 @@
 package edu.cccnj.FivePoints;
+import edu.cccnj.FivePoints.General.Stack;
 import edu.cccnj.FivePoints.World.GraphNavigation.CoordinateMap;
 import edu.cccnj.FivePoints.World.GraphNavigation.MapObject;
 import edu.cccnj.FivePoints.World.GraphNavigation.Node;
@@ -40,6 +41,19 @@ public class Main {
 
         // Make sure the coordinateMap is empty
         System.out.println(cm.toString());
+
+        //Make a new Stack
+        Stack<Integer> stack = new Stack();
+
+        // Push numbers to the stack
+        stack.push(1);
+        stack.push(2);
+
+        // Test pop
+        System.out.println(stack.pop().toString());
+
+        // Get that two back
+        stack.push(2);
 
         // Exit the program
         System.exit(0);
