@@ -21,7 +21,7 @@ public class Controller implements Runnable{
     /**
      * The TickManagers which control the interaction with the world.
      */
-    private ArrayList<TickManager> actors = new ArrayList<>();
+    protected ArrayList<TickManager> actors = new ArrayList<>();
 
     /**
      * The delay between each tick, in milliseconds Default: 1000
