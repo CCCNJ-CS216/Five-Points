@@ -1,7 +1,5 @@
-package edu.cccnj.FivePoints.World;
+ 
 
-import edu.cccnj.FivePoints.General.Actor;
-import edu.cccnj.FivePoints.General.TickManager;
 
 import java.util.ArrayList;
 

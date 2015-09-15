@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=tickDelay
+comment0.target=Controller(long)
+comment0.text=\r\n\ The\ delay\ between\ each\ tick,\ in\ milliseconds\ Default\:\ 1000\r\n\ @param\ tickDelay\r\n
+comment1.params=
+comment1.target=void\ run()
+comment2.params=actor\ tickEvery
+comment2.target=void\ addActor(Actor,\ int)
+comment2.text=\r\n\ Add\ an\ actor\ to\ the\ list\ of\ running\ actors.\r\n\ @param\ actor\ -\ The\ actor\ to\ add\ to\ the\ controller\r\n\ @param\ tickEvery\ -\ How\ many\ ticks\ the\ actor\ should\ act\ (e.g,\ check\ for\ lights\ every\ how\ long?)\r\n
+comment3.params=classType
+comment3.target=java.util.ArrayList\ getActors(java.lang.Class)
+comment3.text=\r\n\ Gets\ every\ actor\ of\ a\ certain\ class\ type.\r\n\ @param\ classType\ -\ the\ type\ of\ class\ to\ search\ for\r\n\ @return\ A\ list\ of\ all\ actors\ of\ this\ type.\r\n
+numComments=4

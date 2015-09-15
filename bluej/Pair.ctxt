@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=item1\ item2
+comment0.target=Pair(java.lang.Object,\ java.lang.Object)
+comment1.params=otherPair
+comment1.target=boolean\ equals(Pair)
+comment1.text=\r\n\ Test\ to\ see\ if\ this\ pair\ has\ a\ value\ equal\ to\ that\ of\ another\r\n\r\n\ @param\ otherPair\ -\ The\ pair\ to\ compare\r\n
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment2.text=\r\n\ Convert\ the\ Pair\ to\ a\ String\ representation.\r\n\r\n\ @return\ The\ Pair\ as\ a\ string.\r\n
+comment3.params=array1\ array2
+comment3.target=java.util.ArrayList\ zip(java.lang.Object[],\ java.lang.Object[])
+comment3.text=\r\n\ Zip\ together\ two\ arrays\ to\ create\ a\ list\ of\ pairs.\ A\ mismatch\ in\ size\ will\ trucate.\r\n\r\n\ @param\ array1\ -\ The\ first\ array\ (x)\r\n\ @param\ array2\ -\ The\ second\ array\ (y)\r\n\ @param\ <T1>\ \ \ -\ The\ type\ of\ the\ first\ array\r\n\ @param\ <T2>\ \ \ -\ The\ type\ of\ the\ second\ array\r\n\ @return\ The\ arrays\ zipped\ together\r\n
+comment4.params=table\ item
+comment4.target=java.util.ArrayList\ lookup(Pair[],\ java.lang.Object)
+comment4.text=\r\n\ Lookup\ the\ value\ associated\ with\ the\ identifier.\r\n\ All\ of\ the\ matching\ values\ are\ returned\r\n\r\n\ @param\ table\ -\ The\ table\ to\ look\ the\ value\ up\ in\r\n\ @param\ item\ \ -\ The\ item\ to\ search\ by\r\n\ @param\ <T1>\ \ -\ The\ type\ of\ the\ first\ item\ for\ the\ pairs\r\n\ @param\ <T2>\ \ -\ The\ type\ of\ the\ second\ item\ for\ the\ pairs\r\n\ @return\ The\ values\ associated\ with\ item\r\n
+numComments=5
