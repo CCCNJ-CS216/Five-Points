@@ -10,8 +10,19 @@ import edu.cccnj.FivePoints.General.Actor;
  */
 public class Car implements Actor
 {
-    class Route{Lane getFirstLane(){return new Lane();}Lane getNextLane(){return this.getFirstLane();}void recordTime(Lane l,int ticks){}}
-    class Lane{boolean inFront(Car c){return false;}void changeLane(Car c, Lane l){}}
+
+    //TODO: Not have these stubbs
+
+    /**
+     * Stub of class Route. Implements functions named and typed to work with the code here.
+     */
+    private class Route{Lane getFirstLane(){return new Lane();}Lane getNextLane(){return this.getFirstLane();}void recordTime(Lane l,int ticks){}}
+
+    /**
+     * Stub of class Lane. Implements functions named and typed to work with the code here.
+     */
+    private class Lane{boolean inFront(Car c){return false;}void changeLane(Car c, Lane l){}}
+
     /**
      * List of Lanes and entry time
      */

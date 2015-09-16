@@ -36,7 +36,7 @@ public class Controller implements Runnable{
     public void run(){
         for/*ever*/(; ;) {
             for (TickManager a : actors) {
-                a.tick();
+                a.tick(); // Makes everything happen
                 try {
                     Thread.sleep(tickDelay);
                 } catch (Exception e){
