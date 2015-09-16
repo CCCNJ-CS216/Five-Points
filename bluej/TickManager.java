@@ -1,4 +1,3 @@
- 
 
 /**
  * TickManagers keep an internal count of a master "tick",
@@ -20,7 +19,7 @@ public class TickManager {
     /**
      * How many ticks have been experienced in the lifetime of this object.
      */
-    private int masterTick;
+    protected int masterTick;
 
     /**
      * The actor that will act on ticks.

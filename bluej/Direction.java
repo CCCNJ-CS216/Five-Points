@@ -1,4 +1,3 @@
- 
 
 /**
  * Direction is a simple enum for basic directions.
