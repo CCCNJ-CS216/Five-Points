@@ -18,6 +18,11 @@ public class Pair<T1, T2> {
      */
     protected T2 item2;
 
+    /**
+     * Constructor for a new Pair
+     * @param item1 - The first item (x)
+     * @param item2 - The second item (y)
+     */
     public Pair(T1 item1, T2 item2) {
         this.item1 = item1;
         this.item2 = item2;
