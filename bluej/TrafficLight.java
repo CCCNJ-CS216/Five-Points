@@ -1,6 +1,4 @@
-package edu.cccnj.FivePoints.Components;
 
-import edu.cccnj.FivePoints.General.Actor;
 
 /**
  * TrafficLights control the lane flow.
@@ -8,7 +6,7 @@ import edu.cccnj.FivePoints.General.Actor;
  * @author Jason Dawson 
  * @version 9/12/2015
  */
-public class trafficLight implements Actor
+public class TrafficLight implements Actor
 {
     // instance variables - replace the example below with your own
     private int cycleTime;
@@ -20,7 +18,7 @@ public class trafficLight implements Actor
     /**
      * traffic light can not be built with an empty Constructor
      */
-    public trafficLight()
+    public TrafficLight()
     {
         System.out.print("trafficLight needs to be created with an int");
     }
@@ -29,7 +27,7 @@ public class trafficLight implements Actor
      * trafficLight constructor.  Needs to be passed an int cycleTime that determins the 
      * cycle the light will follow
      */
-    public trafficLight(int cycle)
+    public TrafficLight(int cycle)
     {
         cycleTime = cycle;
         color = GREEN;
@@ -38,7 +36,7 @@ public class trafficLight implements Actor
     /**
      * An example of a method - replace this comment with your own
      * 
-     * @param  y   a sample parameter for a method
+     * @param  tick a sample parameter for a method
      * @return     the sum of x and y 
      */
      public void act(int tick)

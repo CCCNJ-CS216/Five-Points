@@ -12,11 +12,6 @@ public class TickManager {
     private int tickThreshold;
 
     /**
-     * The current tick within the count.
-     */
-    private int currentTick;
-
-    /**
      * How many ticks have been experienced in the lifetime of this object.
      */
     protected int masterTick;
@@ -33,7 +28,6 @@ public class TickManager {
      */
     public TickManager(int threshold, Actor actor){
         this.tickThreshold = threshold;
-        this.currentTick = 0;
         this.actor = actor;
     }
 
@@ -58,11 +52,9 @@ public class TickManager {
      */
     public void tick(){
         // Increment ticks
-        this.currentTick++;
         this.masterTick++;
 
-        if(currentTick >= tickThreshold) {
-            currentTick = 0;
+        if(masterTick % tickThreshold == 0) {
             actor.act(masterTick);
         }
     }
@@ -71,7 +63,6 @@ public class TickManager {
      * Flush the current tick and force an act.
      */
     public void forceTick(){
-        this.currentTick = 0;
         actor.act(masterTick);
     }
 }
