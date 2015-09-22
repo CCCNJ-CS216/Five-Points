@@ -3,9 +3,10 @@ package edu.cccnj.FivePoints;
 import edu.cccnj.FivePoints.General.Actor;
 import edu.cccnj.FivePoints.General.Stack;
 import edu.cccnj.FivePoints.World.Controller;
-import edu.cccnj.FivePoints.World.GraphNavigation.CoordinateMap;
+/*import edu.cccnj.FivePoints.World.GraphNavigation.CoordinateMap;
 import edu.cccnj.FivePoints.World.GraphNavigation.MapObject;
-import edu.cccnj.FivePoints.World.GraphNavigation.Node;
+import edu.cccnj.FivePoints.World.GraphNavigation.Node;*/
+import edu.cccnj.FivePoints.General.TickManager;
 
 import java.util.ArrayList;
 
@@ -24,6 +25,7 @@ public class Main {
         // Say that the Controller should tick very often.
         final long TICK_DELAY = 1;
 
+        /*
         // Create a new CoordinateMap of size 16, 16
         CoordinateMap cm = new CoordinateMap(16, 16);
 
@@ -54,6 +56,7 @@ public class Main {
         // Make sure the coordinateMap is empty
         System.out.println(cm.toString());
 
+*/
         //Make a new Stack
         Stack<Integer> stack = new Stack();
 
@@ -80,7 +83,7 @@ public class Main {
         controller.addActor(tomCruise, 500);
 
         // Search for MyActor actors in the Controller
-        ArrayList<Actor> actorActors = controller.getActors(MyActor.class);
+        ArrayList<TickManager> actorActors = controller.getManagers(MyActor.class);
 
         // Did it find Tom?
         System.out.println(actorActors.size());

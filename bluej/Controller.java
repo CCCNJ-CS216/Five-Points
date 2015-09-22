@@ -18,7 +18,7 @@ public class Controller implements Runnable{
     /**
      * The TickManagers which control the interaction with the world.
      */
-    protected ArrayList<TickManager> actors = new ArrayList<>();
+    private ArrayList<TickManager> actors = new ArrayList<>();
 
     /**
      * The delay between each tick, in milliseconds Default: 1000
@@ -56,17 +56,17 @@ public class Controller implements Runnable{
     }
 
     /**
-     * Gets every actor of a certain class type.
+     * Gets every TickManager of a certain class type.
      * @param classType - the type of class to search for
      * @return A list of all actors of this type.
      */
-    public ArrayList<Actor> getActors(Class classType){
+    public ArrayList<TickManager> getManagers(Class classType){
 
-        ArrayList<Actor> collectedActors = new ArrayList<Actor>();
+        ArrayList<TickManager> collectedActors = new ArrayList<TickManager>();
 
         for(TickManager tm : actors){
             if(tm.getActor().getClass() == classType)
-                collectedActors.add(tm.getActor());
+                collectedActors.add(tm);
         }
 
         return collectedActors;

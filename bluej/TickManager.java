@@ -14,7 +14,7 @@ public class TickManager {
     /**
      * How many ticks have been experienced in the lifetime of this object.
      */
-    protected int masterTick;
+    private int masterTick;
 
     /**
      * The actor that will act on ticks.
@@ -40,14 +40,6 @@ public class TickManager {
     }
 
     /**
-     * Get the master tick count for this TickManager.
-     * @return
-     */
-    public int getMasterTick(){
-        return masterTick;
-    }
-
-    /**
      * Tick the tickManager, possibly causing the actor to act.
      */
     public void tick(){
@@ -64,5 +56,13 @@ public class TickManager {
      */
     public void forceTick(){
         actor.act(masterTick);
+    }
+
+    /**
+     * Get the master tick, how many ticks this TickManager has been alive for.
+     * @return The Master Tick
+     */
+    public int getMasterTick(){
+        return this.masterTick;
     }
 }
