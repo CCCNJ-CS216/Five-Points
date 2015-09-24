@@ -1,3 +1,4 @@
+
 package edu.cccnj.FivePoints.Components;
 
 import edu.cccnj.FivePoints.General.Actor;
@@ -37,6 +38,21 @@ public class Car implements Actor
      * Lane car will be in after the current lane
      */
     private Lane nextLane;
+    
+    //Accessor methods
+    
+    public Route getRoute(){
+        return myRoute;
+    }
+    
+    public Lane getCurrentLane(){
+        return currentLane;
+    }
+    
+    public Lane getNextLane(){
+        return nextLane;
+    }
+    
 
     /**
      * Constructor for objects of class Car

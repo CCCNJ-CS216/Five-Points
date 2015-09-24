@@ -29,7 +29,23 @@ public class SimplePair {
      * Get the integer
      * @return
      */
-    public Integer getInt(){
+    public Integer getInteger(){
         return wrappedPair.item2;
+    }
+
+    /**
+     * Set the lane
+     * @param lane
+     */
+    public void setLane(Lane lane){
+        this.wrappedPair.setItem1(lane);
+    }
+
+    /**
+     * Set the integer
+     * @param integer
+     */
+    public void setInteger(Integer integer){
+        this.wrappedPair.setItem2(integer);
     }
 }

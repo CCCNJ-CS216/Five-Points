@@ -88,4 +88,18 @@ public class Pair<T1, T2> {
         return values;
     }
 
+    /**
+     * Set item 1
+     * @param item1
+     */
+    public void setItem1(T1 item1){
+        this.item1 = item1;
+    }
+
+    /**
+     * @param item2
+     */
+    public void setItem2(T2 item2){
+        this.item2 = item2;
+    }
 }

@@ -75,5 +75,13 @@ public class Queue <T>{
         return false;
     }
 
+    /**
+     * Get the size of the queue
+     * @return Queue size
+     */
+    public int size(){
+        return queue.size();
+    }
+
 } 
 
