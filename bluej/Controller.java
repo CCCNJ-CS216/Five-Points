@@ -37,6 +37,7 @@ public class Controller {
             for/*ever*/ (; ; ) {
                 for (TickManager a : actors) {
                     a.tick(); // Makes everything happen
+                    this.adjustManagers(); // Adjust every TickManager
                     try {
                         Thread.sleep(tickDelay);
                     } catch (Exception e) {
