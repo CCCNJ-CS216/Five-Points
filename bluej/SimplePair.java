@@ -13,8 +13,7 @@ public class SimplePair {
      * @param integer
      */
     public SimplePair(Lane lane, Integer integer){
-        wrappedPair.item1 = lane;
-        wrappedPair.item2 = integer;
+        wrappedPair = new Pair(lane, integer);
     }
 
     /**

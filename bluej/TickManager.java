@@ -52,6 +52,13 @@ public class TickManager {
     }
 
     /**
+     * Set the tick threshold of this tick manager
+     * @param newThreshold The threshold to use
+     */
+    public void setTickThreshold(int newThreshold){
+        this.tickThreshold = newThreshold;
+    }
+    /**
      * Flush the current tick and force an act.
      */
     public void forceTick(){
