@@ -2,6 +2,7 @@ package edu.cccnj.FivePoints.World;
 
 import edu.cccnj.FivePoints.General.Actor;
 import edu.cccnj.FivePoints.General.TickManager;
+import edu.cccnj.FivePoints.General.Picky;
 
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  *
  * Takes a list of Actors, wraps them in a TickManager, and makes them .act();
  */
-public class Controller implements Runnable{
+public class Controller {
 
     /**
      * How long (in milliseconds) each tick
@@ -32,20 +33,24 @@ public class Controller implements Runnable{
         this.tickDelay = tickDelay;
     }
 
-    @Override
     /**
      * Run the controller
      */
     public void run(){
-        for/*ever*/(; ;) {
-            for (TickManager a : actors) {
-                a.tick(); // Makes everything happen
-                try {
-                    Thread.sleep(tickDelay);
-                } catch (Exception e){
-                    System.out.println(e.getStackTrace());
+        try {
+            for/*ever*/ (; ; ) {
+                for (TickManager a : actors) {
+                    a.tick(); // Makes everything happen
+                    try {
+                        Thread.sleep(tickDelay);
+                    } catch (Exception e) {
+                        System.out.println(e.getStackTrace());
+                    }
                 }
             }
+        } catch(Exception e){
+            System.out.println("Something has gone horribly wrong, but we're going to try again anyway.");
+            this.run();
         }
     }
 
@@ -61,7 +66,7 @@ public class Controller implements Runnable{
     /**
      * Gets every TickManager of a certain class type.
      * @param classType - the type of class to search for
-     * @return A list of all actors of this type.
+     * @return A list of all TickManagers of this type.
      */
     public ArrayList<TickManager> getManagers(Class classType){
 
@@ -73,5 +78,38 @@ public class Controller implements Runnable{
         }
 
         return collectedActors;
+    }
+
+    /**
+     * Gets every Actor of a certain class type
+     * @param classType The type of class to search for
+     * @return A list of all actors of this type
+     */
+    public <T extends Actor> ArrayList<T> getActors(Class classType){
+        ArrayList<T> collection = new ArrayList();
+
+        for(TickManager tm : this.getManagers(classType))
+            collection.add( (T) tm.getActor());
+
+        return collection;
+    }
+    /**
+     * Run some adjustments on the TickManagers. Currently it will:
+     *  - Adjust the cycle time of Picky classes.
+     */
+    public void adjustManagers(){
+        class Adjustments{
+            public void pickyAdjust(TickManager tm){
+                if(tm.getActor() instanceof Picky){
+                    tm.setTickThreshold(((Picky) tm.getActor()).getCycleTime());
+                }
+            }
+        }
+
+        Adjustments adjuster = new Adjustments();
+
+        for(TickManager tm: actors){
+            adjuster.pickyAdjust(tm);
+        }
     }
 }
