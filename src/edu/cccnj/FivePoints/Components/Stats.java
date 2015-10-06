@@ -1,34 +1,47 @@
 package edu.cccnj.FivePoints.Components;
-
+import edu.cccnj.FivePoints.Components.Lane;
 import edu.cccnj.FivePoints.General.Actor;
 
 import java.util.ArrayList;
 /**
  * Write a description of class Stats here.
  *
- * @author (Nancy)
- * @version (9.15.15)
+ * @author (Nancy, Jamie)
+ * @version (Awesome Version10.6.15)
  */
 public class Stats implements Actor
 {
-    private ArrayList<Actor> actors;
+    private ArrayList<Lane> destLanes;
 
     /**
      * Constructor for objects of class Stats
      */
-    public Stats(ArrayList<Actor> a)
+    public Stats(ArrayList<Lane> destLanes)
     {
-        actors = a;
+        destLanes = new ArrayList<Lane>();
     }
 
     public void act(int time)
     {
+        if(time % 5 ==0)
+        {
+            currentCount(time);
 
+        }
     }
 
-    public int currentCount()
+    public void currentCount(int time){
+        double total=0;
+        for(Lane queue: destLanes){
+            total=total+queue.size();
+
+        }
+        System.out.println("the average time per car is:"+ total/time);
+    }
+
+    public int getQueueSize()
     {
-        // Ask the lane for the max count?
+
         return -1; // TODO: not this
     }
 

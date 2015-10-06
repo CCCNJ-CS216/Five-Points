@@ -1,6 +1,6 @@
 package edu.cccnj.FivePoints.Components;
-
 import edu.cccnj.FivePoints.General.Actor;
+import edu.cccnj.FivePoints.General.LightColors;
 
 /**
  * TrafficLights control the lane flow.
@@ -12,8 +12,6 @@ import edu.cccnj.FivePoints.General.Actor;
  */
 public class TrafficLight implements Actor
 {
-    // A set of emum's that describe what color the trffic light is
-    enum LightColors { GREEN, YELLOW, RED }
     //the stored cycle time of the traffic light defaults to 30 if nothing is set
     private int cycleTime;
     //the current time in the cycle
