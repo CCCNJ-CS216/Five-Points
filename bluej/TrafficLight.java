@@ -2,44 +2,93 @@
 
 /**
  * TrafficLights control the lane flow.
+ * Can be either RED or GREEN
+ * YELLOW lights not implimented
  * 
  * @author Jason Dawson 
- * @version 9/12/2015
+ * @version 10/3/2015
  */
 public class TrafficLight implements Actor
 {
-    // instance variables - replace the example below with your own
+    // A set of emum's that describe what color the trffic light is
+    enum LightColors { GREEN, YELLOW, RED }
+    //the stored cycle time of the traffic light defaults to 30 if nothing is set
     private int cycleTime;
-    public final int GREEN = 1;
-    public final int YELLOW = 2;
-    public final int RED = 3;
-    private int color;
+    //the current time in the cycle
+    private int timer;
+    //the current color of the traffic light starts red
+    private LightColors color;
 
     /**
-     * traffic light can not be built with an empty Constructor
+     * the default traffic light. has a cycle time of 30 ticks and starts red
+     * Should only be used for the skeleton
      */
     public TrafficLight()
     {
-        System.out.print("trafficLight needs to be created with an int");
+        cycleTime = 30;
+        timer = cycleTime;
+        color = LightColors.RED;
     }
     
      /**
-     * trafficLight constructor.  Needs to be passed an int cycleTime that determins the 
-     * cycle the light will follow
+     * TrafficLight constructor. 
+     * Sets the cycle time that the light follows and the starting light color
      */
-    public TrafficLight(int cycle)
+    public TrafficLight(int cycle, LightColors initColor)
     {
         cycleTime = cycle;
-        color = GREEN;
+        timer = cycleTime;
+        color = initColor;
+    }
+    
+    /**
+     * Returns the curent color of the traffic light
+     */
+    public LightColors getColor()
+    {
+        return color;
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  tick a sample parameter for a method
-     * @return     the sum of x and y 
+     * The lights act method
+     * depreciates the cycle time by 1 each tick
+     * at 0 changes the light to the next color
      */
      public void act(int tick)
      {
+         timer--;
+         if(timer <= 0)
+         {
+             timer = cycleTime;
+             if(color == LightColors.GREEN)
+             {
+                 color = LightColors.RED;
+             }
+             else if (color == LightColors.RED) 
+             {
+                 color = LightColors.GREEN;
+             }
+         }
      }
+     
+    /**
+     * override of the toString method
+     * retuns a string describing the current state of the light
+     */
+     public String toString()
+     {
+        if(color == LightColors.GREEN)
+        {
+            return "The Light is GREEN";
+        }
+        else if (color == LightColors.RED)
+        {
+            return "The Light is RED";
+        }
+        else if (color == LightColors.YELLOW)
+        {
+            return "The Light is YELLOW";
+        }
+        return "the light is blank somehow. we have a problem";
+    }
 }

@@ -1,5 +1,8 @@
 package edu.cccnj.FivePoints.World;
 
+import edu.cccnj.FivePoints.Components.CarSource;
+import edu.cccnj.FivePoints.Components.Lane;
+import edu.cccnj.FivePoints.Components.TrafficLight;
 import edu.cccnj.FivePoints.General.Actor;
 import edu.cccnj.FivePoints.General.TickManager;
 import edu.cccnj.FivePoints.General.Picky;
@@ -55,6 +58,23 @@ public class Controller {
         }
     }
 
+    /**
+     * Initialize the controller with 3 Lanes, a CarSource, and a TrafflicLight
+     */
+    public void initialize(){
+        TrafficLight light = new TrafficLight();
+        Lane lane1 = new Lane(light, 5);//TODO: No arbitrary maxcount
+        Lane lane2 = new Lane(light, 5);//TODO: No arbitrary maxcount
+        Lane lane3 = new Lane(light, 5);//TODO: No arbitrary maxcount
+        CarSource source = new CarSource(this, lane1, lane2, lane3);
+
+        Actor[] initialActors = {light, lane1, lane2, lane3, source};
+
+        // Add all the actors to the controller
+        for(Actor a: initialActors)
+            this.addActor(a, 1);
+
+    }
     /**
      * Add an actor to the list of running actors.
      * @param actor - The actor to add to the controller

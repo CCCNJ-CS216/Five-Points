@@ -81,7 +81,7 @@ public class Main {
         System.out.println(actorActors.size());
 
         // Start the controller in its own thread
-        new Thread(controller).start();
+
     }
 
 }

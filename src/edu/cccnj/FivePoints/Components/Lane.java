@@ -1,5 +1,5 @@
 package edu.cccnj.FivePoints.Components;
-import edu.cccnj.FivePoints.Components.TrafficLight;
+import edu.cccnj.FivePoints.General.Actor;
 import edu.cccnj.FivePoints.General.Queue;
 
 import java.util.ArrayList;
@@ -9,17 +9,17 @@ import java.util.ArrayList;
  * @version (9/15/15)
  */
 
-public class Lane
+public class Lane implements Actor
 {
     TrafficLight trafficLight;
     Queue<Car> queue;
     int maxcount;
     private ArrayList<Car> cars;
 
-    public Lane(TrafficLight trafficLight, Queue queue, int maxcount)
+    public Lane(TrafficLight trafficLight, int maxcount)
     {
         this.trafficLight = trafficLight;
-        this.queue = queue;
+        this.queue = new Queue<>();
         this.maxcount = maxcount;
         cars = new ArrayList<>();
     }
@@ -67,5 +67,9 @@ public class Lane
     public int getQueueSize()
     {
         return queue.size();
+    }
+
+    public void act(int tick){
+        // Do nothing
     }
 }

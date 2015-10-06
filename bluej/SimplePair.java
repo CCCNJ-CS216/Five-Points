@@ -28,7 +28,7 @@ public class SimplePair {
      * Get the integer
      * @return
      */
-    public Integer getInteger(){
+    public Integer getTime(){
         return wrappedPair.item2;
     }
 
@@ -44,7 +44,7 @@ public class SimplePair {
      * Set the integer
      * @param integer
      */
-    public void setInteger(Integer integer){
+    public void setTime(Integer integer){
         this.wrappedPair.setItem2(integer);
     }
 }

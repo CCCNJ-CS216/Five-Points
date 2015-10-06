@@ -10,19 +10,7 @@
 public class Car implements Actor
 {
 
-    //TODO: Not have these stubbs
-
-    /**
-     * Stub of class Route. Implements functions named and typed to work with the code here.
-     */
-    private class Route{Lane getFirstLane(){return new Lane();}Lane getNextLane(){return this.getFirstLane();}void recordTime(Lane l,int ticks){}}
-
-    /**
-     * Stub of class Lane. Implements functions named and typed to work with the code here.
-     */
-    private class Lane{boolean inFront(Car c){return false;}void changeLane(Car c, Lane l){}}
-
-    /**
+    /*
      * List of Lanes and entry time
      */
     private Route myRoute;
@@ -71,6 +59,7 @@ public class Car implements Actor
      */
     public void act(int ticks)
     {
+        /*
         //checks to see if 'this' car is in from of current lane.(at intersection)
         if(currentLane.inFront(this)){
 
@@ -86,6 +75,7 @@ public class Car implements Actor
             //find out what the next step in the route will be from Route, store in 'nextLane'
             nextLane = myRoute.getNextLane();
         }
+        */ //TODO before it can work: Lane.changeLane, Route.recordTime
     }
 
 }
