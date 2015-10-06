@@ -23,6 +23,12 @@ public class Route
     }
 
     /**
+     * Default constructor
+     */
+    public Route(){
+
+    }
+    /**
      * Get the lane
      * @param routeIndex what index the lane has
      * @return The lane at this index

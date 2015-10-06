@@ -24,6 +24,14 @@ public class Queue <T>{
     }
 
     /**
+     * Initialize a queue with an itial list
+     * @param initialList The initial list
+     */
+    public Queue(ArrayList<T> initialList){
+        this.queue = initialList;
+    }
+
+    /**
      * Check to see if the queue is empty.
      * @return true if empty, false otherwise.
      */
@@ -62,6 +70,13 @@ public class Queue <T>{
         queue.add (data);
     }
 
+    /**
+     * Makes a new Queue that is a shallow copy of this queue
+     * @return Queue
+     */
+    public Queue<T> clone(){
+        return new Queue<>((ArrayList<T>) queue.clone());
+    }
     /**
      * A really cool way to say "false", apparently.
      * @return false. Literally always. Regardless of if ands and buts.
