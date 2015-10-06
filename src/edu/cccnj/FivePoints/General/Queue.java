@@ -1,5 +1,5 @@
-package edu.cccnj.FivePoints.General;
 
+package edu.cccnj.FivePoints.General;
 /*
  *David Hoadley
  */
@@ -72,7 +72,7 @@ public class Queue <T>{
     }
 
     /**
-     * Makes a new Queue that is a deep copy of this queue
+     * Makes a new Queue that is a shallow copy of this queue
      * @return Queue
      */
     public Queue<T> clone(){
@@ -97,6 +97,15 @@ public class Queue <T>{
      */
     public int size(){
         return queue.size();
+    }
+    
+    /**
+     * Peek at an element in the queue.  Element can be at any location.
+     * @param location - location in queue.
+     * @return element at the location.
+     */
+    public T peek(int location){
+        return queue.get(location);
     }
 
 } 

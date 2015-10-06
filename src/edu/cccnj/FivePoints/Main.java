@@ -9,6 +9,7 @@ import edu.cccnj.FivePoints.World.GraphNavigation.Node;*/
 import edu.cccnj.FivePoints.General.TickManager;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * The entry point for the Five-points program. Begins the main controller.
@@ -89,7 +90,6 @@ public class Main {
         System.out.println(actorActors.size());
 
         // Start the controller in its own thread
-
     }
 
 }
