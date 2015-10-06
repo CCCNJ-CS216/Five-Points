@@ -106,5 +106,19 @@ public class Route
 
         return null;
     }
+
+    /**
+     * Get the lane that the car is currently in
+     * @return The current lane, or null if the route is complete for whatever reason
+     */
+    public Lane getCurrentLane(){
+        for(int i = 0; i < route.size(); i++){
+            if(route.get(i).getTime() == null)
+                if(i != 0)
+                    return route.get(i-1).getLane();
+        }
+
+        return null;
+    }
     }
 

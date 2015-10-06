@@ -71,7 +71,7 @@ public class Queue <T>{
     }
 
     /**
-     * Makes a new Queue that is a shallow copy of this queue
+     * Makes a new Queue that is a deep copy of this queue
      * @return Queue
      */
     public Queue<T> clone(){
