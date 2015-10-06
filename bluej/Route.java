@@ -8,9 +8,18 @@ import java.util.ArrayList;
 public class Route
 {
     public ArrayList <SimplePair> route = new ArrayList <>();
-    
-    public Route()
+
+    /**
+     * A constructor that initalizes using 3 lanes
+     * @param lane1
+     * @param lane2
+     * @param lane3
+     */
+    public Route(Lane lane1, Lane lane2, Lane lane3)
     {
+        route.add(new SimplePair(lane1, null));
+        route.add(new SimplePair(lane2, null));
+        route.add(new SimplePair(lane3, null));
     }
 
     /**
@@ -52,6 +61,28 @@ public class Route
     public void setRouteTime(int routeIndex, int time){
         this.route.get(routeIndex).setTime(time);
     }
+
+    /**
+     * Set the time of a particular lane to a given time
+     * @param lane The lane to change the time of
+     * @param time The time to set
+     */
+    public void setRouteTime(Lane lane, int time){
+        for(SimplePair l : route){
+            if(l.getLane() == lane)
+                l.setTime(time);
+        }
+    }
+
+    /**
+     * Set a lane at an index
+     * @param routeIndex The index to set it at
+     * @param lane The lane that is used
+     */
+    public void setLane(int routeIndex, Lane lane){
+        route.get(routeIndex).setLane(lane);
+    }
+
     /**
      * Gets the next lane by finding the next Lane in which route does
      * not have a specified time for entry.

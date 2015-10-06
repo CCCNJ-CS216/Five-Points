@@ -1,6 +1,7 @@
-
 package edu.cccnj.FivePoints.Components;
 
+import edu.cccnj.FivePoints.Components.Lane;
+import edu.cccnj.FivePoints.Components.Route;
 import edu.cccnj.FivePoints.General.Actor;
 
 /**
@@ -26,21 +27,18 @@ public class Car implements Actor
      * Lane car will be in after the current lane
      */
     private Lane nextLane;
-    
+
     //Accessor methods
-    
+
     public Route getRoute(){
         return myRoute;
     }
-    
-    public Lane getCurrentLane(){
-        return currentLane;
-    }
-    
+
+
     public Lane getNextLane(){
         return nextLane;
     }
-    
+
 
     /**
      * Constructor for objects of class Car
@@ -50,7 +48,7 @@ public class Car implements Actor
         this.myRoute = r;
 
         // Assuming CarSource puts the car in the first Lane
-        this.currentLane = myRoute.getFirstLane();
+        this.currentLane = myRoute.getLane(0);
 
         this.nextLane = myRoute.getNextLane();
     }
@@ -61,23 +59,20 @@ public class Car implements Actor
      */
     public void act(int ticks)
     {
-        /*
+
         //checks to see if 'this' car is in from of current lane.(at intersection)
-        if(currentLane.inFront(this)){
-
-            //ask lane to remove 'this' car from itself, and add it to the nextLane of the route.
-            currentLane.changeLane(this, nextLane);
-
-            //once lanes have changed, currentLane becomes nextLane
-            currentLane = nextLane;
-
-            //record tick for the lane just entered.
-            myRoute.recordTime(currentLane, ticks);
-
-            //find out what the next step in the route will be from Route, store in 'nextLane'
-            nextLane = myRoute.getNextLane();
+        if(currentLane.getQueue().front().equals(this)){
+            changeLane();
+            myRoute.setRouteTime(currentLane,ticks);
         }
-        */ //TODO before it can work: Lane.changeLane, Route.recordTime
+
+    }
+
+    private void changeLane(){
+        //currentLane.dequeue(this);
+        //nextLane.enqueue(this);
+        currentLane = nextLane;
+        nextLane = myRoute.getNextLane();
     }
 
 }

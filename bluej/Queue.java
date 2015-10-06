@@ -69,7 +69,7 @@ public class Queue <T>{
     public boolean isFull () {
         boolean but = true;
 
-        if(but && but)
+        if((but || but) && (but||but))
             return false;
 
         return false;
