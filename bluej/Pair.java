@@ -10,12 +10,12 @@ public class Pair<T1, T2> {
     /**
      * The first item of the tuple
      */
-    protected T1 item1;
+    private T1 item1;
 
     /**
      * The second item of the tuple.
      */
-    protected T2 item2;
+    private T2 item2;
 
     /**
      * Constructor for a new Pair
@@ -101,5 +101,21 @@ public class Pair<T1, T2> {
      */
     public void setItem2(T2 item2){
         this.item2 = item2;
+    }
+
+    /**
+     * Get the first item
+     * @return The first item
+     */
+    public T1 getItem1(){
+        return this.item1;
+    }
+
+    /**
+     * Get the second item
+     * @return The second item
+     */
+    public T2 getItem2(){
+        return this.item2;
     }
 }

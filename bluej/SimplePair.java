@@ -21,7 +21,7 @@ public class SimplePair {
      * @return
      */
     public Lane getLane(){
-        return wrappedPair.item1;
+        return wrappedPair.getItem1();
     }
 
     /**
@@ -29,7 +29,7 @@ public class SimplePair {
      * @return
      */
     public Integer getTime(){
-        return wrappedPair.item2;
+        return wrappedPair.getItem2();
     }
 
     /**
