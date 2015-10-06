@@ -22,7 +22,7 @@ public class Controller {
 
     /**
      * The delay between each tick, in milliseconds Default: 1000
-     * @param tickDelay
+     * @param tickDelay How long the real time betwen each tick is in miliseconds
      */
     public Controller(long tickDelay)
     {
@@ -34,6 +34,7 @@ public class Controller {
      */
     public void run(){
         try {
+            this.initialize();
             for/*ever*/ (; ; ) {
                 for (TickManager a : actors) {
                     a.tick(); // Makes everything happen
