@@ -57,7 +57,7 @@ public class Car implements Actor
     {
 
         //checks to see if 'this' car is in from of current lane.(at intersection)
-        if(!currentLane.isEmpty()){
+        if(!currentLane.isEmpty()) {
             System.out.println("My current lane is: " + currentLane.toString());
             if(currentLane.front().equals(this)){
                 changeLane();

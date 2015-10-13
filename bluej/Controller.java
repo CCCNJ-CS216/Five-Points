@@ -1,12 +1,4 @@
-package edu.cccnj.FivePoints.World;
 
-import edu.cccnj.FivePoints.Components.CarSource;
-import edu.cccnj.FivePoints.Components.Lane;
-import edu.cccnj.FivePoints.Components.Stats;
-import edu.cccnj.FivePoints.Components.TrafficLight;
-import edu.cccnj.FivePoints.General.Actor;
-import edu.cccnj.FivePoints.General.TickManager;
-import edu.cccnj.FivePoints.General.Picky;
 
 import java.util.ArrayList;
 

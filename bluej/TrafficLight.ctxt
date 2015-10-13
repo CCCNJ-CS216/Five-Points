@@ -1,17 +1,17 @@
 #BlueJ class context
 comment0.params=
 comment0.target=TrafficLight()
-comment0.text=\r\n\ the\ default\ traffic\ light.\ has\ a\ cycle\ time\ of\ 30\ ticks\ and\ starts\ red\r\n\ Should\ only\ be\ used\ for\ the\ skeleton\r\n
+comment0.text=\n\ the\ default\ traffic\ light.\ has\ a\ cycle\ time\ of\ 30\ ticks\ and\ starts\ red\n\ Should\ only\ be\ used\ for\ the\ skeleton\n
 comment1.params=cycle\ initColor
 comment1.target=TrafficLight(int,\ LightColors)
-comment1.text=\r\n\ TrafficLight\ constructor.\ \r\n\ Sets\ the\ cycle\ time\ that\ the\ light\ follows\ and\ the\ starting\ light\ color\r\n
+comment1.text=\n\ TrafficLight\ constructor.\ \n\ Sets\ the\ cycle\ time\ that\ the\ light\ follows\ and\ the\ starting\ light\ color\n
 comment2.params=
 comment2.target=LightColors\ getColor()
-comment2.text=\r\n\ Returns\ the\ curent\ color\ of\ the\ traffic\ light\r\n
+comment2.text=\n\ Returns\ the\ curent\ color\ of\ the\ traffic\ light\n
 comment3.params=tick
 comment3.target=void\ act(int)
-comment3.text=\r\n\ The\ lights\ act\ method\r\n\ depreciates\ the\ cycle\ time\ by\ 1\ each\ tick\r\n\ at\ 0\ changes\ the\ light\ to\ the\ next\ color\r\n
+comment3.text=\n\ The\ lights\ act\ method\n\ depreciates\ the\ cycle\ time\ by\ 1\ each\ tick\n\ at\ 0\ changes\ the\ light\ to\ the\ next\ color\n
 comment4.params=
 comment4.target=java.lang.String\ toString()
-comment4.text=\r\n\ override\ of\ the\ toString\ method\r\n\ retuns\ a\ string\ describing\ the\ current\ state\ of\ the\ light\r\n
+comment4.text=\n\ override\ of\ the\ toString\ method\n\ retuns\ a\ string\ describing\ the\ current\ state\ of\ the\ light\n
 numComments=5

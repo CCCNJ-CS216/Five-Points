@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=threshold\ actor
+comment0.target=TickManager(int,\ Actor)
+comment0.text=\n\ Constructor\ for\ TickManager.\n\ @param\ threshold\ -\ How\ often\ the\ TickManager\ should\ cause\ the\ actor\ to\ act.\n\ @param\ actor\ -\ The\ actor\ which\ will\ do\ the\ acting.\n
+comment1.params=
+comment1.target=Actor\ getActor()
+comment1.text=\n\ Return\ the\ actor\ object\ in\ this\ TickManager.\n\ @return\ The\ Actor\n
+comment2.params=
+comment2.target=void\ tick()
+comment2.text=\n\ Tick\ the\ tickManager,\ possibly\ causing\ the\ actor\ to\ act.\n
+comment3.params=newThreshold
+comment3.target=void\ setTickThreshold(int)
+comment3.text=\n\ Set\ the\ tick\ threshold\ of\ this\ tick\ manager\n\ @param\ newThreshold\ The\ threshold\ to\ use\n
+comment4.params=
+comment4.target=void\ forceTick()
+comment4.text=\n\ Flush\ the\ current\ tick\ and\ force\ an\ act.\n
+comment5.params=
+comment5.target=int\ getMasterTick()
+comment5.text=\n\ Get\ the\ master\ tick,\ how\ many\ ticks\ this\ TickManager\ has\ been\ alive\ for.\n\ @return\ The\ Master\ Tick\n
+numComments=6
