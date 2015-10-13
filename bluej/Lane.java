@@ -22,9 +22,9 @@ public class Lane implements Actor
 
     }
 
-    public Lane(TrafficLight trafficLight, int maxc)
+    public Lane(TrafficLight tLight, int maxc)
     {
-        trafficLight = trafficLight;
+        trafficLight = tLight;  //sbw this!
         cars = new Queue<>();
         maxcount = maxc;
 
@@ -84,8 +84,10 @@ public class Lane implements Actor
         return maxcount;
     }
 
-    public void act(int tick){
-        // Do nothing
+    public void act(int tick){  //sbw: must pull front() car
+        if(!cars.isEmpty())  //sbw
+           cars.front().act(tick);  //sbw
+        // xxxxxDo nothing
     }
 
     public Car peek(int location){

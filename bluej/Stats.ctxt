@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=destLanes
+comment0.target=Stats(java.util.ArrayList)
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Stats\n
+comment1.params=time
+comment1.target=void\ act(int)
+comment2.params=time
+comment2.target=void\ currentCount(int)
+comment3.params=
+comment3.target=int\ getQueueSize()
+comment3.text=gets\ maximum\ traversal\ time\ and\ displays\ when\ it\ that\ object\ was\ created\n\ \ \ \ public\ void\ getMaxTraversal(){\n\ \ \ \ \ \n\ \ \ \ \ \ \ \ for(Lane\ a\:\ dest){\n\ \ \ \ \ \ \ \ \ a.getQueue();\n\ \ \ \ \ \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ }\n\ \ \ \ \ \ \ \ \n\ \ \ \ }\n\ \ \ \ \ //gets\ minimum\ traversal\ time\ and\ displays\ when\ it\ that\ object\ was\ created\n\ \ \ \ public\ void\ getMinTraversal(){\n\ \ \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ \n\ \ \ \ \ \ \ \ \n\ \ \ \ }\n
+numComments=4

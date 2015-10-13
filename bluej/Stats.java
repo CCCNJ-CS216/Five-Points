@@ -8,14 +8,15 @@ import java.util.ArrayList;
  */
 public class Stats implements Actor
 {
-    private ArrayList<Lane> destLanes;
+    private ArrayList<Lane> dest;
+     public Route croute;
 
     /**
      * Constructor for objects of class Stats
      */
     public Stats(ArrayList<Lane> destLanes)
     {
-        destLanes = new ArrayList<Lane>();
+        dest = destLanes;
     }
 
     public void act(int time)
@@ -29,13 +30,28 @@ public class Stats implements Actor
 
     public void currentCount(int time){
         double total=0;
-        for(Lane queue: destLanes){
+        for(Lane queue: dest){
             total=total+queue.size();
 
         }
         System.out.println("the average time per car is:"+ total/time);
     }
-
+    /*gets maximum traversal time and displays when it that object was created
+    public void getMaxTraversal(){
+     
+        for(Lane a: dest){
+         a.getQueue();
+           
+        }
+        
+    }
+     //gets minimum traversal time and displays when it that object was created
+    public void getMinTraversal(){
+        
+        
+        
+    }
+    */
     public int getQueueSize()
     {
 
