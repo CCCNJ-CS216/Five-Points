@@ -2,6 +2,7 @@ package edu.cccnj.FivePoints.World;
 
 import edu.cccnj.FivePoints.Components.CarSource;
 import edu.cccnj.FivePoints.Components.Lane;
+import edu.cccnj.FivePoints.Components.Stats;
 import edu.cccnj.FivePoints.Components.TrafficLight;
 import edu.cccnj.FivePoints.General.Actor;
 import edu.cccnj.FivePoints.General.TickManager;
@@ -37,13 +38,17 @@ public class Controller {
     }
 
     /**
-     * Run the controller
+     * Run the controller. Optionally, run it for maxTicks amount of times only
+     * @param maxTicks How many ticks the controller should run for. -1 for infinite
      */
-    public void run(){
+    public void run(int maxTicks){
         try {
             this.initialize();
-            for/*ever*/ (; ; ) {
+
+            for (int currentTick = 0; currentTick < maxTicks; currentTick++ ) {
+                System.out.println("Tick=" + currentTick);
                 for (TickManager a : actors) {
+                    System.out.println("Just acted on: " + a.getActor().toString());
                     a.tick(); // Makes everything happen
                     this.adjustManagers(); // Adjust every TickManager
                     try {
@@ -54,26 +59,31 @@ public class Controller {
                 }
             }
         } catch(Exception e){
-            System.out.println("Something has gone horribly wrong, but we're going to try again anyway.");
-            this.run();
+            System.out.println("Something has gone horribly wrong");
         }
     }
 
     /**
      * Initialize the controller with 3 Lanes, a CarSource, and a TrafflicLight
      */
-    public void initialize(){
-        TrafficLight light = new TrafficLight();
-        Lane lane1 = new Lane(light, 5);//TODO: No arbitrary maxcount
-        Lane lane2 = new Lane(light, 5);//TODO: No arbitrary maxcount
-        Lane lane3 = new Lane(light, 5);//TODO: No arbitrary maxcount
+    //sbw added Stats
+    public void initialize()
+    {
+        TrafficLight light = new TrafficLight();//sbw consider using 3-param constructor
+        Lane lane1 = new Lane(light, 99);//TODO: No arbitrary maxcount
+        Lane lane2 = new Lane(light, 99);//TODO: No arbitrary maxcount
+        Lane lane3 = new Lane(light, 99);//TODO: No arbitrary maxcount
+        ArrayList<Lane> dests = new ArrayList();  //sbw
+        dests.add(lane3);  //sbw
+        Stats statx = new Stats(dests);   //sbw
         CarSource source = new CarSource(this, lane1, lane2, lane3);
 
-        Actor[] initialActors = {light, lane1, lane2, lane3, source};
+        Actor[] initialActors = {light, lane1, lane2, lane3, source, statx};  //sbw
 
         // Add all the actors to the controller
         for(Actor a: initialActors)
             this.addActor(a, 1);
+        //this.addActor( a, 1);
 
     }
     /**
@@ -132,6 +142,17 @@ public class Controller {
 
         for(TickManager tm: actors){
             adjuster.pickyAdjust(tm);
+        }
+    }
+
+    /**
+     * Remove the actor from the list of polled objects
+     * @param actor The actor to remove
+     */
+    public void removeActor(Actor actor){
+        for(TickManager t: actors){
+            if(t.getActor() == actor)
+                actors.remove(actor);
         }
     }
 }

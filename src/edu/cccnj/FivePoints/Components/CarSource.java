@@ -1,9 +1,11 @@
-
 package edu.cccnj.FivePoints.Components;
+
 
 import edu.cccnj.FivePoints.General.Actor;
 import edu.cccnj.FivePoints.World.Controller;
+
 import java.util.ArrayList;
+
 /**
  * CarSource is a Factory for class Car. It
  * tracks how many cars have been created,
@@ -32,7 +34,8 @@ public class CarSource implements Actor
     /**
      * Referance to the Controller for finding the lanes and for adding cars to the actor list
      */
-    private Controller controller;
+    //private Controller controller;
+    private Controller controller;  //sbw testing with ControlLite
     
     /**
      * An array list that contains all of the lanes
@@ -51,12 +54,15 @@ public class CarSource implements Actor
      * The constructor, requires a referance to the controller object be given to it
      * this one id for the skeleton and requires that the three lane segments be given too it in the order:
      * first, middle, last.
-     * @param Controller
-     * @param Lane
-     * @param Lane
-     * @param Lane
+     * @param c
+     * @param first
+     * @param middle
+     * @param end
      */
+    
+    //sbw testing ControlLite
     public CarSource(Controller c, Lane first, Lane middle, Lane end)
+    //public CarSource(Controller c, Lane first, Lane middle, Lane end)
     {
         controller = c;
         totalCars = 0;
@@ -73,6 +79,7 @@ public class CarSource implements Actor
     {
         //create a new route
         newRoute = new Route(lanes.get(0), lanes.get(1), lanes.get(2));
+        System.out.println("I have this lane:" + lanes.get(0).toString());
         //create a new car and pass it its route
         newCar = new Car(newRoute);
         //TODO: Put the Car in its first lane

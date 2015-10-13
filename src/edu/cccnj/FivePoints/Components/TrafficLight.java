@@ -1,4 +1,5 @@
 package edu.cccnj.FivePoints.Components;
+
 import edu.cccnj.FivePoints.General.Actor;
 import edu.cccnj.FivePoints.General.LightColors;
 
@@ -25,7 +26,7 @@ public class TrafficLight implements Actor
      */
     public TrafficLight()
     {
-        cycleTime = 30;
+        cycleTime = 3;   //sbw test
         timer = cycleTime;
         color = LightColors.RED;
     }

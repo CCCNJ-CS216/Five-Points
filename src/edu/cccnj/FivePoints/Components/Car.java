@@ -1,7 +1,5 @@
 package edu.cccnj.FivePoints.Components;
 
-import edu.cccnj.FivePoints.Components.Lane;
-import edu.cccnj.FivePoints.Components.Route;
 import edu.cccnj.FivePoints.General.Actor;
 
 /**
@@ -61,18 +59,23 @@ public class Car implements Actor
     {
 
         //checks to see if 'this' car is in from of current lane.(at intersection)
-        if(currentLane.getQueue().front().equals(this)){
-            changeLane();
-            myRoute.setRouteTime(currentLane,ticks);
+        if(!currentLane.isEmpty()) {
+            System.out.println("My current lane is: " + currentLane.toString());
+            if(currentLane.front().equals(this)){
+                changeLane();
+                myRoute.setRouteTime(currentLane,ticks);
+            }
         }
 
     }
 
     private void changeLane(){
-        //currentLane.dequeue(this);
-        //nextLane.enqueue(this);
+        currentLane.dequeue();
+        nextLane.enqueue(this);
         currentLane = nextLane;
-        nextLane = myRoute.getNextLane();
+        if (myRoute.getNextLane() != null){
+            nextLane = myRoute.getNextLane();
+        }
     }
 
 }

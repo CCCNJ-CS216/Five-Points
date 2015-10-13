@@ -1,5 +1,4 @@
 package edu.cccnj.FivePoints.General;
-
 /**
  * An actor in the Five Points simulation.
  * 
