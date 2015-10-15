@@ -1,10 +1,10 @@
 package edu.cccnj.FivePoints.Components;
 
-
 import edu.cccnj.FivePoints.General.Actor;
 import edu.cccnj.FivePoints.World.Controller;
 
 import java.util.ArrayList;
+
 
 /**
  * CarSource is a Factory for class Car. It
@@ -79,7 +79,8 @@ public class CarSource implements Actor
     {
         //create a new route
         newRoute = new Route(lanes.get(0), lanes.get(1), lanes.get(2));
-        System.out.println("I have this lane:" + lanes.get(0).toString());
+        //System.out.println("I have this lane:" + lanes.get(0).toString());
+        newRoute.setRouteTime(lanes.get(0), tick);
         //create a new car and pass it its route
         newCar = new Car(newRoute);
         //TODO: Put the Car in its first lane

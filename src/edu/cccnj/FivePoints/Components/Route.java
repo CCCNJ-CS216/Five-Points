@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class Route
 {
-    public ArrayList <SimplePair> route = new ArrayList <>();
+    public ArrayList <SimplePair> route;
 
     /**
      * A constructor that initalizes using 3 lanes
@@ -19,6 +19,7 @@ public class Route
      */
     public Route(Lane lane1, Lane lane2, Lane lane3)
     {
+        route = new ArrayList<>();
         route.add(new SimplePair(lane1, null));
         route.add(new SimplePair(lane2, null));
         route.add(new SimplePair(lane3, null));
@@ -98,7 +99,7 @@ public class Route
      */
     public Lane getNextLane(){
 
-        for(SimplePair pair: route){
+        for(SimplePair pair : route){
             if(pair.getTime() == null)
                 return pair.getLane();
         }

@@ -70,6 +70,7 @@ public class TrafficLight implements Actor
                  color = LightColors.GREEN;
              }
          }
+         System.out.println("The light is " + color);
      }
      
     /**
