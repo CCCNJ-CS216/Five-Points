@@ -43,7 +43,7 @@ public class Controller {
             for (int currentTick = 0; currentTick < maxTicks; currentTick++ ) {
                 System.out.println("Tick=" + currentTick);
                 for (TickManager a : actors) {
-                    System.out.println("Just acted on: " + a.getActor().toString());
+                    //System.out.println("Just acted on: " + a.getActor().toString());
                     a.tick(); // Makes everything happen
                     this.adjustManagers(); // Adjust every TickManager
                     try {
@@ -52,6 +52,7 @@ public class Controller {
                         System.out.println(e.getStackTrace());
                     }
                 }
+                System.out.println("-------------------------");
             }
         } catch(Exception e){
             System.out.println("Something has gone horribly wrong");
@@ -62,7 +63,7 @@ public class Controller {
      * Run the Controller with the default maxTicks value (9)
      */
     public void simpleRun(){
-        this.run(9);
+        this.run(12);
     }
     /**
      * Initialize the controller with 3 Lanes, a CarSource, and a TrafflicLight
@@ -71,9 +72,9 @@ public class Controller {
     public void initialize()
     {
         TrafficLight light = new TrafficLight();//sbw consider using 3-param constructor
-        Lane lane1 = new Lane(light, 99);//TODO: No arbitrary maxcount
-        Lane lane2 = new Lane(light, 99);//TODO: No arbitrary maxcount
-        Lane lane3 = new Lane(light, 99);//TODO: No arbitrary maxcount
+        Lane lane1 = new Lane(light);//TODO: No arbitrary maxcount
+        Lane lane2 = new Lane(light);//TODO: No arbitrary maxcount
+        Lane lane3 = new Lane(light);//TODO: No arbitrary maxcount
         ArrayList<Lane> dests = new ArrayList();  //sbw
         dests.add(lane3);  //sbw
         Stats statx = new Stats(dests);   //sbw

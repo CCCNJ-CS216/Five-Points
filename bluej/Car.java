@@ -55,25 +55,19 @@ public class Car implements Actor
      */
     public void act(int ticks)
     {
-
-        //checks to see if 'this' car is in from of current lane.(at intersection)
-        if(!currentLane.isEmpty()) {
-            System.out.println("My current lane is: " + currentLane.toString());
-            if(currentLane.front().equals(this)){
-                changeLane();
-                myRoute.setRouteTime(currentLane,ticks);
-            }
+       if(nextLane.getTrafficLight().getColor() != LightColors.RED || nextLane.getTrafficLight() == null){
+           changeLane(ticks);
         }
-
     }
 
-    private void changeLane(){
+    private void changeLane(int ticks){
         currentLane.dequeue();
         nextLane.enqueue(this);
         currentLane = nextLane;
+        myRoute.setRouteTime(currentLane,ticks);
         if (myRoute.getNextLane() != null){
             nextLane = myRoute.getNextLane();
-        }
+        } 
     }
 
 }

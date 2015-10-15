@@ -38,7 +38,7 @@ public class Lane implements Actor
 
     public void  enqueue(Car c)
     {   
-        if (!isFull())
+        if (!this.isFull())
             cars.enqueue(c);
     }
     
@@ -89,6 +89,7 @@ public class Lane implements Actor
         if(!cars.isEmpty())  //sbw
            cars.front().act(tick);  //sbw
         // xxxxxDo nothing
+        System.out.println("Hi there!  I have " + size() +" cars inside.");
     }
 
     public Car peek(int location){
