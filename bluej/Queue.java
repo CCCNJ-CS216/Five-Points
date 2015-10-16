@@ -77,9 +77,10 @@ public class Queue <T>{
     public Queue<T> clone(){
         return new Queue<>((ArrayList<T>) queue.clone());
     }
+
     /**
      * A really cool way to say "false", apparently.
-     * @return false. Literally always. Regardless of if ands and buts.
+     * @return false. Literally always. Regardless of if ands or buts.
      */
     public boolean isFull () {
         boolean but = true;

@@ -2,8 +2,8 @@ package edu.cccnj.FivePoints.Components;
 import edu.cccnj.FivePoints.General.Actor;
 import edu.cccnj.FivePoints.General.LightColors;
 /**
- * Write a description of class Car here.
- *
+ * The car sees a lane and a traffic light,
+ * and decides when to proceed.
  * @author (Joseph Marrongelli / Warren Devonshire)
  * @version (9/16/2015)
  */
@@ -61,14 +61,24 @@ public class Car implements Actor
         }
     }
 
+    /**
+     * Change the lane to the nextLane and set
+     * the departure time of the current lane
+     * @param ticks The timestamp
+     */
     private void changeLane(int ticks){
+
+        // Move the car
         currentLane.dequeue();
         nextLane.enqueue(this);
         currentLane = nextLane;
-        myRoute.setRouteTime(currentLane,ticks);
-        if (myRoute.getNextLane() != null){
+
+        // Write the time
+        myRoute.setRouteTime(currentLane, ticks);
+
+        // Set the next lane if it exists
+        if (myRoute.getNextLane() != null)
             nextLane = myRoute.getNextLane();
-        } 
     }
 
 }

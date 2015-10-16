@@ -14,8 +14,6 @@ import java.util.ArrayList;
 
 public class Stack<T>
 {
-    /* Fields */
-
     /**
      * The stack itself.
      */
@@ -28,8 +26,6 @@ public class Stack<T>
     {
 
     }
-
-    /* Methods */
 
     /**
      * Removes an element from the end of the Array List.

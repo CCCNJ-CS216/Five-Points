@@ -3,23 +3,28 @@
 /**
  * TrafficLights control the lane flow.
  * Can be either RED or GREEN
- * YELLOW lights not implimented
+ * YELLOW lights not implemented
  * 
  * @author Jason Dawson 
  * @version 10/3/2015
  */
 public class TrafficLight implements Actor
 {
-    //the stored cycle time of the traffic light defaults to 30 if nothing is set
+    /**
+     * How often the light changes.
+     * Defaults to 3 if nothing is set.
+     */
     private int cycleTime;
-    //the current time in the cycle
+
+    /** The current time in the cycle*/
     private int timer;
-    //the current color of the traffic light starts red
+
+    /**The current color of the trafficlight*/
     private LightColors color;
 
     /**
-     * the default traffic light. has a cycle time of 30 ticks and starts red
-     * Should only be used for the skeleton
+     * The default traffic light. has a cycle time of 3 ticks and starts red
+     * Should only be used for the skeleton.
      */
     public TrafficLight()
     {
@@ -48,7 +53,7 @@ public class TrafficLight implements Actor
     }
 
     /**
-     * The lights act method
+     * The light's act method
      * depreciates the cycle time by 1 each tick
      * at 0 changes the light to the next color
      */
@@ -58,16 +63,14 @@ public class TrafficLight implements Actor
          if(timer <= 0)
          {
              timer = cycleTime;
+
              if(color == LightColors.GREEN)
-             {
                  color = LightColors.RED;
-             }
-             else if (color == LightColors.RED) 
-             {
+             else if (color == LightColors.RED)
                  color = LightColors.GREEN;
-             }
+
          }
-         System.out.println("The light is " + color);
+         System.out.println("The light is " + color);//Maybe move this to Stats?
      }
      
     /**
@@ -77,17 +80,12 @@ public class TrafficLight implements Actor
      public String toString()
      {
         if(color == LightColors.GREEN)
-        {
             return "The Light is GREEN";
-        }
         else if (color == LightColors.RED)
-        {
             return "The Light is RED";
-        }
         else if (color == LightColors.YELLOW)
-        {
             return "The Light is YELLOW";
-        }
+
         return "the light is blank somehow. we have a problem";
     }
 }

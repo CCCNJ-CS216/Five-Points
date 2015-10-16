@@ -46,7 +46,7 @@ public class Pair<T1, T2> {
     }
 
     /**
-     * Zip together two arrays to create a list of pairs. A mismatch in size will trucate.
+     * Zip together two arrays to create a list of pairs. A mismatch in size will truncate.
      *
      * @param array1 - The first array (x)
      * @param array2 - The second array (y)

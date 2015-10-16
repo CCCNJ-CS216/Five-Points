@@ -46,9 +46,8 @@ public class TickManager {
         // Increment ticks
         this.masterTick++;
 
-        if(masterTick % tickThreshold == 0) {
+        if(masterTick % tickThreshold == 0)
             actor.act(masterTick);
-        }
     }
 
     /**

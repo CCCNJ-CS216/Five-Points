@@ -3,31 +3,31 @@
 
 /**
  * SimplePair is a wrapper of Pair.
- * All it does is bind a Lane with an Int.
+ * All it does is bind a Lane with an Integer.
  */
 public class SimplePair {
+
+    /**SimpleLanes are Pairs at their base.*/
     private Pair<Lane, Integer> wrappedPair;
 
     /**
      * The constructor for a simple pair
-     * @param lane - The l
-     * @param integer
+     * @param lane The lane
+     * @param time The time to bind with this Lane.
      */
-    public SimplePair(Lane lane, Integer integer){
-        wrappedPair = new Pair(lane, integer);
+    public SimplePair(Lane lane, Integer time){
+        wrappedPair = new Pair(lane, time);
     }
 
     /**
-     * Get the lane
-     * @return
+     * @return The lane
      */
     public Lane getLane(){
         return wrappedPair.getItem1();
     }
 
     /**
-     * Get the integer
-     * @return
+     * @return The time
      */
     public Integer getTime(){
         return wrappedPair.getItem2();
@@ -35,17 +35,17 @@ public class SimplePair {
 
     /**
      * Set the lane
-     * @param lane
+     * @param lane The lane to set
      */
     public void setLane(Lane lane){
         this.wrappedPair.setItem1(lane);
     }
 
     /**
-     * Set the integer
-     * @param integer
+     * Set the time
+     * @param time The time to set on this SimplePair
      */
-    public void setTime(Integer integer){
-        this.wrappedPair.setItem2(integer);
+    public void setTime(Integer time){
+        this.wrappedPair.setItem2(time);
     }
 }

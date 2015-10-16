@@ -13,13 +13,15 @@ public class Route
 
     /**
      * A constructor that initalizes using 3 lanes
-     * @param lane1
-     * @param lane2
-     * @param lane3
+     * @param lane1 The first lane
+     * @param lane2 The second lane
+     * @param lane3 The third lane
      */
     public Route(Lane lane1, Lane lane2, Lane lane3)
     {
         route = new ArrayList<>();
+
+        // Initialize all of the times to null
         route.add(new SimplePair(lane1, null));
         route.add(new SimplePair(lane2, null));
         route.add(new SimplePair(lane3, null));
@@ -29,10 +31,11 @@ public class Route
      * Default constructor
      */
     public Route(){
-
+        System.out.println("Warning: Route created with default constructor");
     }
+
     /**
-     * Get the lane
+     * Get the lane at a given index
      * @param routeIndex what index the lane has
      * @return The lane at this index
      */
@@ -50,8 +53,6 @@ public class Route
     {
         return this.route.get(routeIndex).getTime();
     }
-
-    /* Warning: Everything added below is to remove the stubs from Car. They may be removed in the future */
 
     /**
      * Get the first Lane of the route
@@ -98,7 +99,7 @@ public class Route
      * @return The lane, or null if it is in the final lane.
      */
     public Lane getNextLane(){
-
+        // Finds the first lane with a null time and returns it
         for(SimplePair pair : route){
             if(pair.getTime() == null)
                 return pair.getLane();
@@ -112,6 +113,7 @@ public class Route
      * @return The current lane, or null if the route is complete for whatever reason
      */
     public Lane getCurrentLane(){
+        // Finds the first lane (not the current one) with a null time, and returns the one before it.
         for(int i = 0; i < route.size(); i++){
             if(route.get(i).getTime() == null)
                 if(i != 0)

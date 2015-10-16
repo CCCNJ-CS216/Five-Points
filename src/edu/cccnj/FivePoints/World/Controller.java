@@ -62,32 +62,34 @@ public class Controller {
     }
 
     /**
-     * Run the Controller with the default maxTicks value (9)
+     * Run the Controller with the default maxTicks value (12)
      */
     public void simpleRun(){
         this.run(12);
     }
+
     /**
-     * Initialize the controller with 3 Lanes, a CarSource, and a TrafflicLight
+     * Initialize the controller with 3 Lanes, a CarSource, and a TrafficLight
      */
     //sbw added Stats
     public void initialize()
     {
-        TrafficLight light = new TrafficLight();//sbw consider using 3-param constructor
-        Lane lane1 = new Lane(light);//TODO: No arbitrary maxcount
-        Lane lane2 = new Lane(light);//TODO: No arbitrary maxcount
-        Lane lane3 = new Lane(light);//TODO: No arbitrary maxcount
-        ArrayList<Lane> dests = new ArrayList();  //sbw
+        TrafficLight light = new TrafficLight(3, LightColors.RED);
+
+        Lane lane1 = new Lane(light);
+        Lane lane2 = new Lane(light);
+        Lane lane3 = new Lane(light);
+
+        ArrayList<Lane> dests = new ArrayList();
         dests.add(lane3);  //sbw
         Stats statx = new Stats(dests);   //sbw
         CarSource source = new CarSource(this, lane1, lane2, lane3);
 
-        Actor[] initialActors = {light, lane1, lane2, lane3, source, statx};  //sbw
+        Actor[] initialActors = {light, lane1, lane2, lane3, source, statx};
 
         // Add all the actors to the controller
         for(Actor a: initialActors)
             this.addActor(a, 1);
-        //this.addActor( a, 1);
 
     }
     /**

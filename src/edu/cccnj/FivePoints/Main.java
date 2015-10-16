@@ -16,13 +16,12 @@ import java.util.Arrays;
  */
 public class Main {
 
-        /**
-     * Before the sekeleton is fully written, main is going to test (poorly) and demonstrate
-     * the ability of implemented objects. Come here as a tutorial
-     * @param args
+    /**
+     * Simply creates a new Controller and runs it
+     * @param args Any command line arguments. Currently ignored.
      */
     public static void main(String[] args){
-        // Make a new controller and start it
+        // Make a new controller that ticks every millisecond and run it 9 times
         new Controller(1).run(9);
     }
 

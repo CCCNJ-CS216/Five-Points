@@ -29,13 +29,12 @@ public class CarSource implements Actor
     private Route newRoute;
     
     /**
-     * Referance to the Controller for finding the lanes and for adding cars to the actor list
+     * Reference to the Controller for finding the lanes and for adding cars to the actor list
      */
-    //private Controller controller;
-    private Controller controller;  //sbw testing with ControlLite
+    private Controller controller;
     
     /**
-     * An array list that contains all of the lanes
+     * An ArrayList that contains all of the lanes
      */
     private ArrayList<Lane> lanes;
 
@@ -48,21 +47,19 @@ public class CarSource implements Actor
     }
     
     /**
-     * The constructor, requires a referance to the controller object be given to it
+     * The constructor, requires a reference to the controller object be given to it
      * this one id for the skeleton and requires that the three lane segments be given too it in the order:
      * first, middle, last.
-     * @param c
-     * @param first
-     * @param middle
-     * @param end
+     * @param c The controller
+     * @param first The first lane
+     * @param middle The middle lane
+     * @param end The last lane
      */
-    
-    //sbw testing ControlLite
     public CarSource(Controller c, Lane first, Lane middle, Lane end)
-    //public CarSource(Controller c, Lane first, Lane middle, Lane end)
     {
         controller = c;
         totalCars = 0;
+
         lanes = new ArrayList();
         lanes.add(0, first);
         lanes.add(1, middle);
@@ -76,13 +73,16 @@ public class CarSource implements Actor
     {
         //create a new route
         newRoute = new Route(lanes.get(0), lanes.get(1), lanes.get(2));
-        //System.out.println("I have this lane:" + lanes.get(0).toString());
+
+        // Set the route time of the first lane to this time
         newRoute.setRouteTime(lanes.get(0), tick);
+
         //create a new car and pass it its route
         newCar = new Car(newRoute);
-        //TODO: Put the Car in its first lane
+
+        // Put the car in the first lane
         lanes.get(0).enqueue(newCar);
-        //incriment the totalCars stat tracker by 1
+        //increment the totalCars stat tracker by 1
         totalCars++;
     }
 

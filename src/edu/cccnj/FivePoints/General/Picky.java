@@ -4,9 +4,16 @@ package edu.cccnj.FivePoints.General;
  * Picky is a class for objects
  * that would prefer to tell the controller
  * that they determine their own cycle time, regardless
- * of what their tick managers say.
+ * of what their TickManagers say.
  */
 public abstract class Picky {
+    /*
+     * Technical note: Picky classes are handled by
+     * Controller.adjustManagers(), which is a public method.
+     * If you have a reference to the controller, you can
+     * manually adjust your Picky class with it.
+     */
+
     /**
      * The cycle time to specify to the controller.
      */
