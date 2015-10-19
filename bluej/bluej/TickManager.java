@@ -1,0 +1,74 @@
+
+/**
+ * TickManagers keep an internal count of a master "tick",
+ * such as one that the controller supplies, and run an action
+ *
+ * every certain number of ticks.
+ */
+public class TickManager {
+    /**
+     * How many ticks to perform an action on.
+     */
+    private int tickThreshold;
+
+    /**
+     * How many ticks have been experienced in the lifetime of this object.
+     */
+    private int masterTick;
+
+    /**
+     * The actor that will act on ticks.
+     */
+    private Actor actor;
+
+    /**
+     * Constructor for TickManager.
+     * @param threshold - How often the TickManager should cause the actor to act.
+     * @param actor - The actor which will do the acting.
+     */
+    public TickManager(int threshold, Actor actor){
+        this.tickThreshold = threshold;
+        this.actor = actor;
+    }
+
+    /**
+     * Return the actor object in this TickManager.
+     * @return The Actor
+     */
+    public Actor getActor(){
+        return this.actor;
+    }
+
+    /**
+     * Tick the tickManager, possibly causing the actor to act.
+     */
+    public void tick(){
+        // Increment ticks
+        this.masterTick++;
+
+        if(masterTick % tickThreshold == 0)
+            actor.act(masterTick);
+    }
+
+    /**
+     * Set the tick threshold of this tick manager
+     * @param newThreshold The threshold to use
+     */
+    public void setTickThreshold(int newThreshold){
+        this.tickThreshold = newThreshold;
+    }
+    /**
+     * Flush the current tick and force an act.
+     */
+    public void forceTick(){
+        actor.act(masterTick);
+    }
+
+    /**
+     * Get the master tick, how many ticks this TickManager has been alive for.
+     * @return The Master Tick
+     */
+    public int getMasterTick(){
+        return this.masterTick;
+    }
+}

@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Route\ getRoute()
+comment1.params=
+comment1.target=Lane\ getNextLane()
+comment2.params=r
+comment2.target=Car(Route)
+comment2.text=\n\ Constructor\ for\ objects\ of\ class\ Car\n
+comment3.params=ticks
+comment3.target=void\ act(int)
+comment3.text=\n\ Check\ to\ see\ if\ this\ car\ can\ (and\ should)\ move\ lanes.\n\ @param\ ticks\ The\ current\ tick\ count.\n
+comment4.params=ticks
+comment4.target=void\ changeLane(int)
+comment4.text=\n\ Change\ the\ lane\ to\ the\ nextLane\ and\ set\n\ the\ departure\ time\ of\ the\ current\ lane\n\ @param\ ticks\ The\ timestamp\n
+numComments=5

@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=int\ getCycleTime()
+comment0.text=\n\ Get\ the\ current\ cycle\ time\ of\ the\ Picky\ Object\n\ @return\ The\ current\ cycle\ time\n
+comment1.params=newTime
+comment1.target=void\ setCycleTime(int)
+comment1.text=\n\ Tell\ the\ Picky\ object\ to\ use\ a\ new\ time\ as\ its\n\ cycle\ time\n\ @param\ newTime\ The\ time\ to\ use\ on\ the\ Object.\n
+numComments=2

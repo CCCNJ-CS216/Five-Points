@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.params=destLanes
+comment0.target=Stats(java.util.ArrayList)
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Stats.\ Sets\ the\ Lanes.\n
+comment1.params=time
+comment1.target=void\ act(int)
+comment1.text=\n\ Act.\ Every\ certain\ amount\ of\ ticks\ run\ Stats\ methods.\n\ @param\ time\n
+comment2.params=time
+comment2.target=void\ currentCount(int)
+comment2.text=\n\ Find\ out\ the\ average\ time\ for\ a\ car\ to\ make\ it\n\ through\ all\ of\ the\ lanes.\n\ @param\ time\ The\ current\ time\ in\ ticks\n
+comment3.params=
+comment3.target=void\ getMaxTraversal()
+comment3.text=\n\ Get\ the\ maximum\ traversal\ time.\ That\ is,\n\ the\ highest\ amount\ of\ any\ car\ through\ all\ lanes.\n
+comment4.params=
+comment4.target=void\ getMinTraversal()
+comment4.text=\n\ Get\ the\ minimum\ traversal\ time.\ That\ is,\n\ the\ lowest\ amount\ of\ time\ of\ any\ car\ through\ all\ lanes.\n
+comment5.params=
+comment5.target=int\ getQueueSize()
+numComments=6

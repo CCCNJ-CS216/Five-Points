@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=lane\ time
+comment0.target=SimplePair(Lane,\ java.lang.Integer)
+comment0.text=\n\ The\ constructor\ for\ a\ simple\ pair\n\ @param\ lane\ The\ lane\n\ @param\ time\ The\ time\ to\ bind\ with\ this\ Lane.\n
+comment1.params=
+comment1.target=Lane\ getLane()
+comment1.text=\n\ @return\ The\ lane\n
+comment2.params=
+comment2.target=java.lang.Integer\ getTime()
+comment2.text=\n\ @return\ The\ time\n
+comment3.params=lane
+comment3.target=void\ setLane(Lane)
+comment3.text=\n\ Set\ the\ lane\n\ @param\ lane\ The\ lane\ to\ set\n
+comment4.params=time
+comment4.target=void\ setTime(java.lang.Integer)
+comment4.text=\n\ Set\ the\ time\n\ @param\ time\ The\ time\ to\ set\ on\ this\ SimplePair\n
+numComments=5
