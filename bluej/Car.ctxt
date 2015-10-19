@@ -11,4 +11,5 @@ comment3.target=void\ act(int)
 comment3.text=\n\ Check\ to\ see\ if\ this\ car\ can\ (and\ should)\ move\ lanes.\n\ @param\ ticks\ The\ current\ tick\ count.\n
 comment4.params=ticks
 comment4.target=void\ changeLane(int)
+comment4.text=\n\ Change\ the\ lane\ to\ the\ nextLane\ and\ set\n\ the\ departure\ time\ of\ the\ current\ lane\n\ @param\ ticks\ The\ timestamp\n
 numComments=5

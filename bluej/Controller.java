@@ -72,9 +72,9 @@ public class Controller {
     {
         TrafficLight light = new TrafficLight(3, LightColors.RED);
 
-        Lane lane1 = new Lane(light);
+        Lane lane1 = new Lane(null);
         Lane lane2 = new Lane(light);
-        Lane lane3 = new Lane(light);
+        Lane lane3 = new Lane(null);
 
         ArrayList<Lane> dests = new ArrayList();
         dests.add(lane3);  //sbw

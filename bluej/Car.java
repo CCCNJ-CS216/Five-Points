@@ -1,3 +1,4 @@
+import java.util.Random;
 /**
  * Write a description of class Car here.
  *
@@ -7,7 +8,7 @@
 public class Car implements Actor
 {
 
-    /*
+    /**
      * List of Lanes and entry time
      */
     private Route myRoute;
@@ -21,6 +22,16 @@ public class Car implements Actor
      * Lane car will be in after the current lane
      */
     private Lane nextLane;
+    
+    /**
+     * Random number generator needed for approximating random driver behavior.
+     */
+    private Random rgen = new Random();
+    
+    /**
+     * Tick when the car last moved.
+     */
+    private int lastMove = 0;
 
     //Accessor methods
 
@@ -53,8 +64,12 @@ public class Car implements Actor
      */
     public void act(int ticks)
     {
-       if(nextLane.getTrafficLight().getColor() != LightColors.RED || nextLane.getTrafficLight() == null){
-           changeLane(ticks);
+       if(nextLane.getTrafficLight() == null){
+            changeLane(ticks);
+        } else if(nextLane.getTrafficLight().getColor() == LightColors.GREEN){
+            changeLane(ticks);
+        } else if(nextLane.getTrafficLight().getColor() == LightColors.YELLOW && rgen.nextBoolean()){
+            changeLane(ticks);
         }
     }
 
@@ -65,13 +80,18 @@ public class Car implements Actor
      */
     private void changeLane(int ticks){
 
-        // Move the car
-        currentLane.dequeue();
-        nextLane.enqueue(this);
-        currentLane = nextLane;
+        if(nextLane != currentLane && lastMove != ticks){
+            // Move the car
+            currentLane.dequeue();
+            nextLane.enqueue(this);
+            currentLane = nextLane;
 
-        // Write the time
-        myRoute.setRouteTime(currentLane, ticks);
+            // Write the time
+            myRoute.setRouteTime(currentLane, ticks);
+            
+            //update the lastMove tick
+            lastMove = ticks;
+        }
 
         // Set the next lane if it exists
         if (myRoute.getNextLane() != null)

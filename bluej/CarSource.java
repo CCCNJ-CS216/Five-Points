@@ -87,7 +87,7 @@ public class CarSource implements Actor
     }
 
     /**
-     * A string description of the factor
+     * A string description of the factory
      * @return The total number of cars ever created by this factory.
      */
     public String toString()
@@ -96,7 +96,7 @@ public class CarSource implements Actor
     }
     
     /**
-     * Accessor for the total cars created in the lifetime of this object. for stat's mostly
+     * Accessor for the total cars created in the lifetime of this object. Mainly used by the stat's 
      */
     public int getTotalCars()
     {

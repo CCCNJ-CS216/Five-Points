@@ -62,12 +62,17 @@ public class TrafficLight implements Actor
          timer--;
          if(timer <= 0)
          {
-             timer = cycleTime;
 
-             if(color == LightColors.GREEN)
+             if(color == LightColors.YELLOW){
                  color = LightColors.RED;
-             else if (color == LightColors.RED)
+                 timer = cycleTime;
+                } else if (color == LightColors.RED){
                  color = LightColors.GREEN;
+                 timer = cycleTime;
+                } else if (color == LightColors.GREEN){
+                  color = LightColors.YELLOW;
+                  timer = 1;
+                }
 
          }
          System.out.println("The light is " + color);//Maybe move this to Stats?

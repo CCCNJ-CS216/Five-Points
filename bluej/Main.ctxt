@@ -1,5 +1,5 @@
 #BlueJ class context
 comment0.params=args
 comment0.target=void\ main(java.lang.String[])
-comment0.text=\n\ Before\ the\ sekeleton\ is\ fully\ written,\ main\ is\ going\ to\ test\ (poorly)\ and\ demonstrate\n\ the\ ability\ of\ implemented\ objects.\ Come\ here\ as\ a\ tutorial\n\ @param\ args\n
+comment0.text=\n\ Simply\ creates\ a\ new\ Controller\ and\ runs\ it\n\ @param\ args\ Any\ command\ line\ arguments.\ Currently\ ignored.\n
 numComments=1

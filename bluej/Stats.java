@@ -44,7 +44,7 @@ public class Stats implements Actor
         for(Lane queue: dest)
             total=total+queue.size();
 
-        System.out.println("the average time per car is: "+ total/time);
+        System.out.println("The average time per car is: "+ total/time);
     }
 
     /**
@@ -75,7 +75,7 @@ public class Stats implements Actor
 
             }
         }
-        System.out.println("the max traversal time is: "+ max +" created at time: "+crtime);
+        System.out.println("The maximum traversal time is: "+ max +". The car was created at time: "+crtime);
     }
 
     /**
@@ -105,7 +105,7 @@ public class Stats implements Actor
 
             }
         }
-        System.out.println("the min traversal time is: "+ min +" created at time: "+crtime);
+        System.out.println("The minimum traversal time is: "+ min +".  The car was created at time: "+crtime);
 
     }
 

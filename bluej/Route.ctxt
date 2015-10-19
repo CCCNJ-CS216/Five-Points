@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.params=lane1\ lane2\ lane3
 comment0.target=Route(Lane,\ Lane,\ Lane)
-comment0.text=\n\ A\ constructor\ that\ initalizes\ using\ 3\ lanes\n\ @param\ lane1\n\ @param\ lane2\n\ @param\ lane3\n
+comment0.text=\n\ A\ constructor\ that\ initalizes\ using\ 3\ lanes\n\ @param\ lane1\ The\ first\ lane\n\ @param\ lane2\ The\ second\ lane\n\ @param\ lane3\ The\ third\ lane\n
 comment1.params=
 comment1.target=Route()
 comment1.text=\n\ Default\ constructor\n
 comment2.params=routeIndex
 comment2.target=Lane\ getLane(int)
-comment2.text=\n\ Get\ the\ lane\n\ @param\ routeIndex\ what\ index\ the\ lane\ has\n\ @return\ The\ lane\ at\ this\ index\n
+comment2.text=\n\ Get\ the\ lane\ at\ a\ given\ index\n\ @param\ routeIndex\ what\ index\ the\ lane\ has\n\ @return\ The\ lane\ at\ this\ index\n
 comment3.params=routeIndex
 comment3.target=java.lang.Integer\ getTime(int)
 comment3.text=\n\n\ @param\ routeIndex\n\ @return\n
