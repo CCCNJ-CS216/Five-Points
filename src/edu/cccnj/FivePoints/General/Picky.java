@@ -1,5 +1,4 @@
 package edu.cccnj.FivePoints.General;
-
 /**
  * Picky is a class for objects
  * that would prefer to tell the controller

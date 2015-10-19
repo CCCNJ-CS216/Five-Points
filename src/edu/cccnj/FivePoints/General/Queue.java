@@ -1,5 +1,4 @@
 package edu.cccnj.FivePoints.General;
-
 /*
  *David Hoadley
  */

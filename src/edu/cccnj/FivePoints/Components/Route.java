@@ -1,5 +1,5 @@
-package edu.cccnj.FivePoints.Components;
 
+package edu.cccnj.FivePoints.Components;
 import edu.cccnj.FivePoints.General.SimplePair;
 
 import java.util.ArrayList;

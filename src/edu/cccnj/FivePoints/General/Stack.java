@@ -1,5 +1,4 @@
 package edu.cccnj.FivePoints.General;
-
 /**
  * Stack Class:
  *
@@ -10,7 +9,6 @@ package edu.cccnj.FivePoints.General;
  * @author Josue Gomez
  * @version 1.1
  */
-import edu.cccnj.FivePoints.Components.Car;
 
 import java.util.ArrayList;
 

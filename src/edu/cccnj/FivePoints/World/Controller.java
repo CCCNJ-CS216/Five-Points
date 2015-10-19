@@ -1,7 +1,13 @@
 package edu.cccnj.FivePoints.World;
+import edu.cccnj.FivePoints.Components.CarSource;
+import edu.cccnj.FivePoints.Components.Lane;
+import edu.cccnj.FivePoints.Components.Stats;
+import edu.cccnj.FivePoints.Components.TrafficLight;
+import edu.cccnj.FivePoints.General.Actor;
+import edu.cccnj.FivePoints.General.LightColors;
+import edu.cccnj.FivePoints.General.Picky;
 import edu.cccnj.FivePoints.General.TickManager;
-import edu.cccnj.FivePoints.Components.*;
-import edu.cccnj.FivePoints.General.*;
+
 import java.util.ArrayList;
 
 /**
@@ -76,9 +82,9 @@ public class Controller {
     {
         TrafficLight light = new TrafficLight(3, LightColors.RED);
 
-        Lane lane1 = new Lane(light);
+        Lane lane1 = new Lane(null);
         Lane lane2 = new Lane(light);
-        Lane lane3 = new Lane(light);
+        Lane lane3 = new Lane(null);
 
         ArrayList<Lane> dests = new ArrayList();
         dests.add(lane3);  //sbw

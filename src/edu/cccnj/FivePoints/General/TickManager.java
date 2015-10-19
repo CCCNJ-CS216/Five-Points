@@ -1,5 +1,4 @@
 package edu.cccnj.FivePoints.General;
-
 /**
  * TickManagers keep an internal count of a master "tick",
  * such as one that the controller supplies, and run an action
