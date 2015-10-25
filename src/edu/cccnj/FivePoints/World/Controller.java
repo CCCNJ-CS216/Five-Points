@@ -45,7 +45,7 @@ public class Controller {
      * @param maxTicks How many ticks the controller should run for. -1 for infinite
      */
     public void run(int maxTicks){
-        //try {
+        try {
             this.initialize();
 
             for (int currentTick = 0; currentTick < maxTicks; currentTick++ ) {
@@ -62,9 +62,9 @@ public class Controller {
                 }
                 System.out.println("-------------------------");
             }
-        //} catch(Exception e){
+        } catch(Exception e){
             System.out.println("Something has gone horribly wrong");
-        //}
+        }
     }
 
     /**
