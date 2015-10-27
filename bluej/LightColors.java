@@ -1,4 +1,3 @@
-
 /**
  * Enumeration class LightColors - The three colors a TrafficLight can be
  * RED, YELLOW, RED
