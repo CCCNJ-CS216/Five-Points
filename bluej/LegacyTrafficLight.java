@@ -1,8 +1,5 @@
 
-package edu.cccnj.FivePoints.Components;
 
-import edu.cccnj.FivePoints.General.Actor;
-import edu.cccnj.FivePoints.General.LightColors;
 
 /**
  * TrafficLights control the lane flow.
@@ -11,8 +8,10 @@ import edu.cccnj.FivePoints.General.LightColors;
  * 
  * @author Jason Dawson 
  * @version 10/3/2015
+ * @deprecated LegacyTrafficLight is deprecated. It will be removed from the project once
+ * the other parts of the program can work with TrafficLight.
  */
-public class TrafficLight implements Actor
+public class LegacyTrafficLight implements Actor
 {
     /**
      * How often the light changes.
@@ -30,7 +29,7 @@ public class TrafficLight implements Actor
      * The default traffic light. has a cycle time of 3 ticks and starts red
      * Should only be used for the skeleton.
      */
-    public TrafficLight()
+    public LegacyTrafficLight()
     {
         cycleTime = 3;   //sbw test
         timer = cycleTime;
@@ -41,7 +40,7 @@ public class TrafficLight implements Actor
      * TrafficLight constructor. 
      * Sets the cycle time that the light follows and the starting light color
      */
-    public TrafficLight(int cycle, LightColors initColor)
+    public LegacyTrafficLight(int cycle, LightColors initColor)
     {
         cycleTime = cycle;
         timer = cycleTime;

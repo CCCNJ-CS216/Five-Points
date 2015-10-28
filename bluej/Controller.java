@@ -66,12 +66,12 @@ public class Controller {
     }
 
     /**
-     * Initialize the controller with 3 Lanes, a CarSource, and a TrafficLight
+     * Initialize the controller with 3 Lanes, a CarSource, and a LegacyTrafficLight
      */
     //sbw added Stats
     public void initialize()
     {
-        TrafficLight light = new TrafficLight(3, LightColors.RED);
+        LegacyTrafficLight light = new LegacyTrafficLight(3, LightColors.RED);
 
         Lane lane1 = new Lane(null);
         Lane lane2 = new Lane(light);

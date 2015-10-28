@@ -2,7 +2,7 @@ package edu.cccnj.FivePoints.World;
 import edu.cccnj.FivePoints.Components.CarSource;
 import edu.cccnj.FivePoints.Components.Lane;
 import edu.cccnj.FivePoints.Components.Stats;
-import edu.cccnj.FivePoints.Components.TrafficLight;
+import edu.cccnj.FivePoints.Components.LegacyTrafficLight;
 import edu.cccnj.FivePoints.General.Actor;
 import edu.cccnj.FivePoints.General.LightColors;
 import edu.cccnj.FivePoints.General.Picky;
@@ -75,12 +75,12 @@ public class Controller {
     }
 
     /**
-     * Initialize the controller with 3 Lanes, a CarSource, and a TrafficLight
+     * Initialize the controller with 3 Lanes, a CarSource, and a LegacyTrafficLight
      */
     //sbw added Stats
     public void initialize()
     {
-        TrafficLight light = new TrafficLight(3, LightColors.RED);
+        LegacyTrafficLight light = new LegacyTrafficLight(3, LightColors.RED);
 
         Lane lane1 = new Lane(null);
         Lane lane2 = new Lane(light);

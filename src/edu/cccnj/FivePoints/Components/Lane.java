@@ -13,13 +13,13 @@ import java.util.ArrayList;
 /**
  * Lanes are the containers for most of the
  * actual actors themselves. It contains a
- * queue of cars which are controlled by a TrafficLight,
+ * queue of cars which are controlled by a LegacyTrafficLight,
  * and optionally constrained by a maxCount.
  */
 public class Lane implements Actor
 {
     /** The traffic light this lane looks at*/
-    private TrafficLight trafficLight;
+    private LegacyTrafficLight trafficLight;
 
     /** The cars that this lane currently has */
     private Queue<Car> cars;
@@ -28,10 +28,10 @@ public class Lane implements Actor
     private int maxcount;
 
     /**
-     * Create a new lane with a give TrafficLight
+     * Create a new lane with a give LegacyTrafficLight
      * @param tLight The light to make this lane look at
      */
-    public Lane(TrafficLight tLight)
+    public Lane(LegacyTrafficLight tLight)
     {
         trafficLight = tLight;
         cars = new Queue<>();
@@ -44,7 +44,7 @@ public class Lane implements Actor
      * @param tLight The light to make this lane look at
      * @param maxc How many cars will be allowed in this Lane at a time
      */
-    public Lane(TrafficLight tLight, int maxc)
+    public Lane(LegacyTrafficLight tLight, int maxc)
     {
         trafficLight = tLight;  //sbw this!
         cars = new Queue<>();
@@ -115,7 +115,7 @@ public class Lane implements Actor
     /**
      * @return The traffic light this lane sees
      */
-    public TrafficLight getTrafficLight()
+    public LegacyTrafficLight getTrafficLight()
     {
         return trafficLight;
     }
@@ -132,7 +132,7 @@ public class Lane implements Actor
      * Set the traffic light that this lane looks at to a new one
      * @param tLight The light to make this lane look at
      */
-    public void setTrafficLight(TrafficLight tLight)
+    public void setTrafficLight(LegacyTrafficLight tLight)
     {
         trafficLight = tLight;
     }
