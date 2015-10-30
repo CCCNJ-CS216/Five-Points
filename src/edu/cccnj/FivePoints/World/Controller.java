@@ -4,7 +4,7 @@ import edu.cccnj.FivePoints.Components.Lane;
 import edu.cccnj.FivePoints.Components.Stats;
 import edu.cccnj.FivePoints.Components.LegacyTrafficLight;
 import edu.cccnj.FivePoints.General.Actor;
-import edu.cccnj.FivePoints.General.LightColors;
+import edu.cccnj.FivePoints.Components.Light.LightColor;
 import edu.cccnj.FivePoints.General.Picky;
 import edu.cccnj.FivePoints.General.TickManager;
 
@@ -80,7 +80,7 @@ public class Controller {
     //sbw added Stats
     public void initialize()
     {
-        LegacyTrafficLight light = new LegacyTrafficLight(3, LightColors.RED);
+        LegacyTrafficLight light = new LegacyTrafficLight(3, LightColor.RED);
 
         Lane lane1 = new Lane(null);
         Lane lane2 = new Lane(light);

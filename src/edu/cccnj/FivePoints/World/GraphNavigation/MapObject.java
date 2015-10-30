@@ -81,13 +81,13 @@ public class MapObject {
      * @param direction In which direction to grow the object
      */
     public void grow(int factor, Direction direction){
-        if(direction == Direction.Left)
+        if(direction == Direction.LEFT)
             this.x1 -= factor;
-        else if(direction == Direction.Right)
+        else if(direction == Direction.RIGHT)
             this.x2 += factor;
-        else if(direction == Direction.Up)
+        else if(direction == Direction.UP)
             this.y2 += factor;
-        else if(direction == Direction.Down)
+        else if(direction == Direction.DOWN)
             this.y1 -= factor;
 
         this.checkCoordinates();

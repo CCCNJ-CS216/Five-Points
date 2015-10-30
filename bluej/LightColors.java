@@ -1,5 +1,5 @@
 /**
- * Enumeration class LightColors - The three colors a TrafficLight can be
+ * Enumeration class LightColor - The three colors a TrafficLight can be
  * RED, YELLOW, RED
  * 
  * @author Jason
