@@ -1,15 +1,18 @@
 package edu.cccnj.FivePoints.Components.Light;
 
 import edu.cccnj.FivePoints.General.Actor;
+import edu.cccnj.FivePoints.General.Component;
 import edu.cccnj.FivePoints.General.Pair;
 
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * The TrafficLight changes its colors based on variable
  * intervals.
  */
-public class TrafficLight implements Actor {
+public class TrafficLight extends Component implements Actor, Serializable {
 
     /**
      * The color that the light currently is.

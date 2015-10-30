@@ -13,7 +13,6 @@ public class Main {
      * @param args Any command line arguments. Currently ignored.
      */
     public static void main(String[] args){
-        // Make a new controller that ticks every millisecond and run it 9 times
         new Controller(1).run(9);
     }
 }

@@ -1,14 +1,13 @@
 package edu.cccnj.FivePoints;
 
+import edu.cccnj.FivePoints.Components.Light.LightColor;
 import edu.cccnj.FivePoints.Components.Light.LightPost;
-import edu.cccnj.FivePoints.General.Actor;
-import edu.cccnj.FivePoints.General.Cardinal;
-import edu.cccnj.FivePoints.General.Stack;
+import edu.cccnj.FivePoints.Components.Light.TrafficLight;
+import edu.cccnj.FivePoints.General.*;
 import edu.cccnj.FivePoints.World.Controller;
 /*import edu.cccnj.FivePoints.World.GraphNavigation.CoordinateMap;
 import edu.cccnj.FivePoints.World.GraphNavigation.MapObject;
 import edu.cccnj.FivePoints.World.GraphNavigation.Node;*/
-import edu.cccnj.FivePoints.General.TickManager;
 import edu.cccnj.FivePoints.World.GraphNavigation.Direction;
 
 import java.util.ArrayList;
@@ -24,7 +23,6 @@ public class Main {
      * @param args Any command line arguments. Currently ignored.
      */
     public static void main(String[] args){
-        // Make a new controller that ticks every millisecond and run it 9 times
         new Controller(1).run(9);
     }
 }
