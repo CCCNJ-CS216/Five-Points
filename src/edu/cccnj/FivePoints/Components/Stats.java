@@ -1,4 +1,3 @@
-
 package edu.cccnj.FivePoints.Components;
 import edu.cccnj.FivePoints.General.Actor;
 import edu.cccnj.FivePoints.General.Queue;
