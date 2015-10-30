@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-
-
 import java.util.ArrayList;
 
 /**
@@ -179,7 +176,6 @@ public class TrafficLight implements Actor {
         this.tick();
     }
 }
-=======
 
 
 
@@ -277,4 +273,3 @@ public class TrafficLight implements Actor
         return "the light is blank somehow. we have a problem";
     }
 }
->>>>>>> 7ffe8d4bc56562b41fb6f1dd6c09d2d46085f1c7
