@@ -68,9 +68,9 @@ public class Car implements Actor
     {
        if(nextLane.getTrafficLight() == null){
             changeLane(ticks);
-        } else if(nextLane.getTrafficLight().getColor() == LightColors.GREEN){
+        } else if(nextLane.getTrafficLight().getColor() == LightColor.GREEN){
             changeLane(ticks);
-        } else if(nextLane.getTrafficLight().getColor() == LightColors.YELLOW && rgen.nextBoolean()){
+        } else if(nextLane.getTrafficLight().getColor() == LightColor.YELLOW && rgen.nextBoolean()){
             changeLane(ticks);
         }
     }

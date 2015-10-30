@@ -71,7 +71,7 @@ public class Controller {
     //sbw added Stats
     public void initialize()
     {
-        LegacyTrafficLight light = new LegacyTrafficLight(3, LightColors.RED);
+        LegacyTrafficLight light = new LegacyTrafficLight(3, LightColor.RED);
 
         Lane lane1 = new Lane(null);
         Lane lane2 = new Lane(light);

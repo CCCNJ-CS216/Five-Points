@@ -23,7 +23,7 @@ public class LegacyTrafficLight implements Actor
     private int timer;
 
     /**The current color of the trafficlight*/
-    private LightColors color;
+    private LightColor color;
 
     /**
      * The default traffic light. has a cycle time of 3 ticks and starts red
@@ -33,14 +33,14 @@ public class LegacyTrafficLight implements Actor
     {
         cycleTime = 3;   //sbw test
         timer = cycleTime;
-        color = LightColors.RED;
+        color = LightColor.RED;
     }
     
      /**
      * TrafficLight constructor. 
      * Sets the cycle time that the light follows and the starting light color
      */
-    public LegacyTrafficLight(int cycle, LightColors initColor)
+    public LegacyTrafficLight(int cycle, LightColor initColor)
     {
         cycleTime = cycle;
         timer = cycleTime;
@@ -50,7 +50,7 @@ public class LegacyTrafficLight implements Actor
     /**
      * Returns the curent color of the traffic light
      */
-    public LightColors getColor()
+    public LightColor getColor()
     {
         return color;
     }
@@ -66,14 +66,14 @@ public class LegacyTrafficLight implements Actor
          if(timer <= 0)
          {
 
-             if(color == LightColors.YELLOW){
-                 color = LightColors.RED;
+             if(color == LightColor.YELLOW){
+                 color = LightColor.RED;
                  timer = cycleTime;
-                } else if (color == LightColors.RED){
-                 color = LightColors.GREEN;
+                } else if (color == LightColor.RED){
+                 color = LightColor.GREEN;
                  timer = cycleTime;
-                } else if (color == LightColors.GREEN){
-                  color = LightColors.YELLOW;
+                } else if (color == LightColor.GREEN){
+                  color = LightColor.YELLOW;
                   timer = 1;
                 }
 
@@ -87,11 +87,11 @@ public class LegacyTrafficLight implements Actor
      */
      public String toString()
      {
-        if(color == LightColors.GREEN)
+        if(color == LightColor.GREEN)
             return "The Light is GREEN";
-        else if (color == LightColors.RED)
+        else if (color == LightColor.RED)
             return "The Light is RED";
-        else if (color == LightColors.YELLOW)
+        else if (color == LightColor.YELLOW)
             return "The Light is YELLOW";
 
         return "the light is blank somehow. we have a problem";
