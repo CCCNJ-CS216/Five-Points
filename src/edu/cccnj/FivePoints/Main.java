@@ -1,6 +1,7 @@
 package edu.cccnj.FivePoints;
 
 import edu.cccnj.FivePoints.Components.Light.LightColor;
+import edu.cccnj.FivePoints.Components.Light.LightConfiguration;
 import edu.cccnj.FivePoints.Components.Light.LightPost;
 import edu.cccnj.FivePoints.Components.Light.TrafficLight;
 import edu.cccnj.FivePoints.General.*;

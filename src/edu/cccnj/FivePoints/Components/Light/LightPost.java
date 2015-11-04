@@ -23,6 +23,8 @@ public class LightPost implements Runnable {
     // Binding of synced panels.
     private ArrayList<SynchronizedPanel> syncedPanels = new ArrayList<>();
 
+    private Cardinal currentGreen;
+
     /**
      * Creates a new LightPost.
      *
@@ -53,7 +55,8 @@ public class LightPost implements Runnable {
         getPanel(firstGreen).force(LightColor.GREEN);
         getPanel(CardinalUtils.getClockwiseAdjacent(firstGreen)).force(LightColor.RED);
 
-        act(firstGreen);
+        currentGreen = firstGreen;
+
     }
 
     /**
@@ -103,24 +106,24 @@ public class LightPost implements Runnable {
     }
 
     /**
-     * Act. This will cause each synchronized face to act.
-     * @param
+     * Run. This will.
      */
-    public void run (Cardinal firstGreen) {
+    public void run () {
         for(;;){
             try {
-                SynchronizedPanel panel = getPanel(firstGreen);
+                SynchronizedPanel panel = getPanel(currentGreen);
 
                 panel.act(0);
 
+                // Is the primary light red? Time to shift our focus then.
                 if(panel.getCurrentColor() == LightColor.RED) {
-                    firstGreen = CardinalUtils.getClockwiseAdjacent(firstGreen);
-                    getPanel(firstGreen).force(LightColor.GREEN);
+                    currentGreen = CardinalUtils.getClockwiseAdjacent(currentGreen);
+                    getPanel(currentGreen).force(LightColor.GREEN);
                 }
 
                 Thread.sleep(1000);
             } catch(Exception e){
-                System.out.println("SYNC ERROR");
+                System.out.println("SYNC ERROR IN LIGHTPOST OBJECT: " + super.toString());
             }
         }
     }
