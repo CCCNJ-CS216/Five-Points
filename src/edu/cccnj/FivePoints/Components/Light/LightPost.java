@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * As with real traffic lights, a LightPost itself is
  * made up of 4 synchronized faces.
  */
-public class LightPost {
+public class LightPost implements Runnable {
 
     // Up, Right.
     private TrafficLight northFace;
@@ -26,19 +26,25 @@ public class LightPost {
     /**
      * Creates a new LightPost.
      *
-     * @param greenTime  How long any given TrafficLight will be green for.
-     * @param redTime    How long any given TrafficLight will be red for.
-     * @param yellowTime How long any given TrafficLight will be yellow for.
+     * @param northSouth How configuration for the north and south lights.
+     * @param eastWest How the configuration for the east and west lights.
      * @param firstGreen The direction which should be green first
-     *                   Note: (North and South) and (East and West) have the same effect.
+     *
      */
-    public LightPost(int greenTime, int redTime, int yellowTime, Cardinal firstGreen) {
+    public LightPost(LightConfiguration northSouth, LightConfiguration eastWest, Cardinal firstGreen) {
 
         // Initialize the traffic lights
-        northFace = new TrafficLight(greenTime, redTime, yellowTime, LightColor.RED);
-        southFace = new TrafficLight(greenTime, redTime, yellowTime, LightColor.RED);
-        eastFace  = new TrafficLight(greenTime, redTime, yellowTime, LightColor.RED);
-        westFace  = new TrafficLight(greenTime, redTime, yellowTime, LightColor.RED);
+        northFace = new TrafficLight(northSouth.getGreenTime(),
+                northSouth.getRedTime(), northSouth.getYellowTime(), LightColor.RED);
+
+        southFace = new TrafficLight(northSouth.getGreenTime(),
+                northSouth.getRedTime(), northSouth.getYellowTime(), LightColor.RED);
+
+        eastFace = new TrafficLight(northSouth.getGreenTime(),
+                northSouth.getRedTime(), northSouth.getYellowTime(), LightColor.RED);
+
+        westFace = new TrafficLight(northSouth.getGreenTime(),
+                northSouth.getRedTime(), northSouth.getYellowTime(), LightColor.RED);
 
         // Initialize the synced panels
         syncedPanels.add(new SynchronizedPanel(northFace, southFace));
@@ -47,6 +53,7 @@ public class LightPost {
         getPanel(firstGreen).force(LightColor.GREEN);
         getPanel(CardinalUtils.getClockwiseAdjacent(firstGreen)).force(LightColor.RED);
 
+        act(firstGreen);
     }
 
     /**
@@ -97,10 +104,24 @@ public class LightPost {
 
     /**
      * Act. This will cause each synchronized face to act.
-     * @param ticks The current tick count of the simulation.
+     * @param
      */
-    public void act(int ticks){
-        for(SynchronizedPanel panel : syncedPanels)
-            panel.act(ticks);
+    public void run (Cardinal firstGreen) {
+        for(;;){
+            try {
+                SynchronizedPanel panel = getPanel(firstGreen);
+
+                panel.act(0);
+
+                if(panel.getCurrentColor() == LightColor.RED) {
+                    firstGreen = CardinalUtils.getClockwiseAdjacent(firstGreen);
+                    getPanel(firstGreen).force(LightColor.GREEN);
+                }
+
+                Thread.sleep(1000);
+            } catch(Exception e){
+                System.out.println("SYNC ERROR");
+            }
+        }
     }
 }
