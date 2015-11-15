@@ -1,5 +1,6 @@
 package edu.cccnj.FivePoints.Components.Light;
 
+import edu.cccnj.FivePoints.General.Actor;
 import edu.cccnj.FivePoints.General.Cardinal;
 import edu.cccnj.FivePoints.General.CardinalUtils;
 import edu.cccnj.FivePoints.General.Pair;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  * As with real traffic lights, a LightPost itself is
  * made up of 4 synchronized faces.
  */
-public class LightPost implements Runnable {
+public class LightPost implements Actor {
 
     // Up, Right.
     private TrafficLight northFace;
@@ -108,23 +109,20 @@ public class LightPost implements Runnable {
     /**
      * Run. This will.
      */
-    public void run () {
-        for(;;){
-            try {
-                SynchronizedPanel panel = getPanel(currentGreen);
+    public void act (int ticks) {
+        try {
+            SynchronizedPanel panel = getPanel(currentGreen);
 
-                panel.act(0);
+            panel.act(ticks);
 
-                // Is the primary light red? Time to shift our focus then.
-                if(panel.getCurrentColor() == LightColor.RED) {
-                    currentGreen = CardinalUtils.getClockwiseAdjacent(currentGreen);
-                    getPanel(currentGreen).force(LightColor.GREEN);
-                }
-
-                Thread.sleep(1000);
-            } catch(Exception e){
-                System.out.println("SYNC ERROR IN LIGHTPOST OBJECT: " + super.toString());
+            // Is the primary light red? Time to shift our focus then.
+            if(panel.getCurrentColor() == LightColor.RED) {
+                currentGreen = CardinalUtils.getClockwiseAdjacent(currentGreen);
+                getPanel(currentGreen).force(LightColor.GREEN);
             }
+
+        } catch(Exception e){
+            System.out.println("SYNC ERROR IN LIGHTPOST OBJECT: " + super.toString());
         }
     }
 }
