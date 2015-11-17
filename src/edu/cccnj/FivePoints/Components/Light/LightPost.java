@@ -43,11 +43,11 @@ public class LightPost implements Actor {
         southFace = new TrafficLight(northSouth.getGreenTime(),
                 northSouth.getRedTime(), northSouth.getYellowTime(), LightColor.RED);
 
-        eastFace = new TrafficLight(northSouth.getGreenTime(),
-                northSouth.getRedTime(), northSouth.getYellowTime(), LightColor.RED);
+        eastFace = new TrafficLight(eastWest.getGreenTime(),
+                eastWest.getRedTime(), eastWest.getYellowTime(), LightColor.RED);
 
-        westFace = new TrafficLight(northSouth.getGreenTime(),
-                northSouth.getRedTime(), northSouth.getYellowTime(), LightColor.RED);
+        westFace = new TrafficLight(eastWest.getGreenTime(),
+                eastWest.getRedTime(), eastWest.getYellowTime(), LightColor.RED);
 
         // Initialize the synced panels
         syncedPanels.add(new SynchronizedPanel(northFace, southFace));

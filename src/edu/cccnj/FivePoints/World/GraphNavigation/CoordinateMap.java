@@ -122,12 +122,15 @@ public class CoordinateMap {
         return s;
     }
 
+    // Temporarily commented as Java 7 does not have lambdas yet.
+    /*
     /**
      * Move the MapObject a certain amount, based on the pair.
      * X value is the amount on the X axis, y value is the amount on the Y axis.
      * @param type - The type of the objects to get.
-     */
+     *//*
     public ArrayList<MapObject> getMapObjects(Node type) {
         return new ArrayList(Arrays.asList(activeObjects.stream().filter(m -> m.type == type).toArray()));
     }
+    */
 }

@@ -60,6 +60,14 @@ public class SynchronizedPanel implements Actor {
     }
 
     /**
+     * Get the color of the primary light right now
+     * @return The current color
+     */
+    public LightColor getCurrentColor(){
+        return this.light1.getCurrentColor();
+    }
+
+    /**
      * Update light1, and set light2 to sync to it.
      * @param ticks The current time of the simulation in ticks.
      */
