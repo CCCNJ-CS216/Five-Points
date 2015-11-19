@@ -15,5 +15,8 @@ public enum LightColor
     YELLOW,
 
     // Red means go at your own risk.
-    RED;
+    RED,
+
+    // We don't exactly know what INDIGO is or does, but whatevs
+    INDIGO
 }
