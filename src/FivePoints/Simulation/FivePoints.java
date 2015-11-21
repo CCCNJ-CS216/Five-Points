@@ -1,13 +1,13 @@
-package FivePoints;
+package FivePoints.Simulation;
 
-import FivePoints.General.Pair;
+import FivePoints.General.CustomCanvas;
+import FivePoints.Threading.Shared;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
 import static javafx.scene.text.TextAlignment.CENTER;
@@ -22,8 +22,8 @@ import java.util.concurrent.Semaphore;
  */
 public class FivePoints extends Application {
 
-    private Pair<Semaphore, CustomCanvas> canvas;
-    private Pair<Semaphore, Text> textPane;
+    private Shared<CustomCanvas> canvas;
+    private Shared<Text> textPane;
 
     // Check to see if
     private final Semaphore available = new Semaphore(1);
@@ -40,21 +40,16 @@ public class FivePoints extends Application {
             then adds them to root BorderPane
         */
         BorderPane root = new BorderPane();
-        canvas = new Pair(new Semaphore(1), new CustomCanvas(800, 600));
-        textPane = new Pair(new Semaphore(1), new Text());
 
-        try {
-            textPane.getItem1().acquire();
-            textPane.getItem2().setTextAlignment(CENTER);
-            textPane.getItem1().release();
-        } catch (InterruptedException e) {
-            System.out.println(e.getStackTrace());
-        }
+        canvas = new Shared<CustomCanvas>(new CustomCanvas(800, 600));
+        textPane = new Shared<Text>(new Text());
+
+       textPane.perform((Text x) -> x.setTextAlignment(CENTER));
 
         TextFlow flow = new TextFlow();
 
-        flow.getChildren().add(textPane.getItem2());
-        root.setRight(canvas.getItem2());
+        flow.getChildren().add(textPane.getSharedUnsafe());
+        root.setRight(canvas.getSharedUnsafe());
 
         root.setLeft(flow);
         root.setTop(createMenu());
@@ -86,12 +81,16 @@ public class FivePoints extends Application {
         //create menuitems and eventhandlers
         MenuItem start = new MenuItem("Start");
         start.setOnAction((ActionEvent event) -> {
-            controller.start();
+            controller.begin();
         });
 
         MenuItem stop = new MenuItem("Stop");
         stop.setOnAction((ActionEvent event) -> {
-            controller.stop();
+            try {
+                controller.pauseWorld();
+            } catch(InterruptedException e){
+
+            }
         });
 
         MenuItem clear = new MenuItem("Clear");
@@ -112,22 +111,12 @@ public class FivePoints extends Application {
     /*
         Getter Methods
     */
-    public Pair<Semaphore, CustomCanvas> requestCanvas() {
-        try {
+    public Shared<CustomCanvas> requestCanvas() {
             return canvas;
-        } catch (Exception e) {
-            System.out.println(e.getStackTrace());
-        }
-        return null;
     }
 
 
-    public Pair<Semaphore, Text> requestTextPane(){
-        try{
-            return textPane;
-        } catch (Exception e){
-            System.out.println(e.getStackTrace());
-        }
-        return null;
+    public Shared<Text> requestTextPane() {
+        return textPane;
     }
 }

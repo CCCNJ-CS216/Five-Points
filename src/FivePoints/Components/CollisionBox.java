@@ -1,5 +1,6 @@
-package FivePoints;
+package FivePoints.Components;
 
+import FivePoints.Simulation.World;
 import javafx.geometry.Point2D;
 
 /**
@@ -20,7 +21,7 @@ public class CollisionBox {
     private Point2D topRight;
 
     /**
-     * Constructor. Gaurauntees that the collision box is not a polygon
+     * Constructor. Guarantees that the collision box is not a polygon
      * @param xPos - Center x coordinate
      * @param yPos - Center y coordinate
      * @param width How wide the object is

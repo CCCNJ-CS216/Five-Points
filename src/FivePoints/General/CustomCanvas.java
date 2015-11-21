@@ -1,4 +1,4 @@
-package FivePoints;
+package FivePoints.General;
 
 
 import javafx.scene.canvas.Canvas;
@@ -17,7 +17,7 @@ import javafx.scene.paint.Paint;
 */
 public class CustomCanvas extends Canvas {
 
-    CustomCanvas(int width, int height) {
+    public CustomCanvas(int width, int height) {
         super(width,height);
     }
     

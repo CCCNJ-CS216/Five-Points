@@ -1,4 +1,7 @@
-package FivePoints;
+package FivePoints.Components;
+
+import FivePoints.General.Actor;
+import FivePoints.Simulation.World;
 
 import static javafx.scene.paint.Color.BLACK;
 
@@ -23,13 +26,7 @@ public class Vehicle extends Actor {
 
     @Override
     public void draw() {
-        try {
-            world.requestCanvas().getItem1().acquire();
-            world.requestCanvas().getItem2().drawRect(xpos, ypos, width, height, BLACK);
-            world.requestCanvas().getItem1().release();
-        } catch (Exception e){
-            System.out.println(e.getStackTrace());
-        }
+        world.requestCanvas().perform(x -> x.drawRect(xpos, ypos, width, height, BLACK));
     }
 
    

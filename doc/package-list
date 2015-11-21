@@ -1,3 +1,6 @@
 FivePoints
+FivePoints.Components
 FivePoints.General
 FivePoints.GraphNavigation
+FivePoints.Simulation
+FivePoints.Threading

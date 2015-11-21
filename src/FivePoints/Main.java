@@ -1,5 +1,7 @@
 package FivePoints;
 
+import FivePoints.Simulation.FivePoints;
+
 /**
  * Kicks off the entire simulation
  */

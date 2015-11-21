@@ -1,12 +1,15 @@
-package FivePoints;
+package FivePoints.Simulation;
 
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.Semaphore;
 
-import FivePoints.General.Pair;
-import javafx.animation.AnimationTimer;
+import FivePoints.Components.Stats;
+import FivePoints.Components.Vehicle;
+import FivePoints.General.Actor;
+import FivePoints.General.CustomCanvas;
+import FivePoints.Threading.Shared;
+
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
@@ -18,11 +21,14 @@ import javafx.scene.text.Text;
  */
 
 /*
-    World is a JavaFx AnimationTimer
+    World is a Thread
     It's handle method is called by JavaFX every 1/60th of a second.(60fps)
 */
 public class World implements Runnable {
-    
+
+    // Target FPS (controls Thread.sleep)
+    private static final double FPS=60.0;
+
     /*
         Arraylists of actors to be updated and drawn in the loop.
         newActors(created by a current actor, added to currentActors at start/end of loop.) Temporary
@@ -34,7 +40,8 @@ public class World implements Runnable {
     private ArrayList<Actor> deadActors;
     
     private Stats stats;
-    
+
+    private boolean paused;
     /*
         Will ask controller for things it needs from gui.(like the canvas).
     */
@@ -51,6 +58,15 @@ public class World implements Runnable {
     @Override
     public void run() {
         for(;;) {
+            // Cause GUI delay
+            try {
+                Thread.sleep((int)(1000 / FPS));
+            } catch(Exception e){
+                System.out.println(e.getStackTrace());
+            }
+
+            if(paused)
+                continue;
             //gets canvas from the controller and clears it.
             controller.clear();
 
@@ -64,15 +80,10 @@ public class World implements Runnable {
             currentActors.stream().forEach(a -> a.update());
             //draw all currentActors
             currentActors.stream().forEach(a -> a.draw());
-
-            try {
-                Thread.sleep(100);
-            } catch(Exception e){
-                System.out.println(e.getStackTrace());
-            }
         }
     }
-    
+
+
     /*
         Constructor
     */
@@ -100,16 +111,12 @@ public class World implements Runnable {
         }
         */
 
-        try {
-            requestCanvas().getItem1().acquire();
-            requestCanvas().getItem2().addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent event) -> {
-                Actor temp = new Vehicle(getWorld(), (int) event.getX(), (int) event.getY());
-                newActors.add(temp);
-            });
-            requestCanvas().getItem1().release();
-        } catch(Exception e){
+        controller.requestCanvas().perform(x ->
+                x.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent event) -> {
+                    Actor temp = new Vehicle(getWorld(), (int) event.getX(), (int) event.getY());
+                    newActors.add(temp);
+                }));
 
-        }
        
        stats = new Stats(this);
         
@@ -122,17 +129,26 @@ public class World implements Runnable {
         
     }
 
-    public Pair<Semaphore, CustomCanvas> requestCanvas() {
+    public void pause(){
+        paused = true;
+    }
+
+    public void start(){
+        paused = false;
+    }
+
+    public Shared<CustomCanvas> requestCanvas() {
         return controller.requestCanvas();
     }
 
-    public Pair<Semaphore, Text> requestTextPane(){
+    public Shared<Text> requestTextPane(){
         return controller.requestTextPane();
     }
 
     public World getWorld(){
         return this;
     }
+
     public ArrayList<Actor> getDeadActors(){
         return deadActors;
     }

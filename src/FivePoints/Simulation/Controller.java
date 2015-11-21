@@ -1,10 +1,9 @@
-package FivePoints;
+package FivePoints.Simulation;
 
-import FivePoints.General.Pair;
+import FivePoints.Simulation.FivePoints;
+import FivePoints.Threading.Shared;
 import javafx.scene.text.Text;
-
-import java.awt.*;
-import java.util.concurrent.Semaphore;
+import FivePoints.General.CustomCanvas;
 
 /**
     Controller is the class through which the Gui and the World communicate.
@@ -12,12 +11,10 @@ import java.util.concurrent.Semaphore;
     (The Gui should not hold a reference to world, and World should not hold a reference to Gui.)
 */
 public class Controller {
-    //reference to gui thread
+    //reference to gui thread (it doesn't need to be a thread since it is the main thread)
     private FivePoints gui;
 
-    //reference to world thread
     private World world;
-
     private Thread worldThread;
 
     /**
@@ -32,44 +29,60 @@ public class Controller {
     
     //creates world and passes it a JavaFX Canvas
     private void init(){
-        worldThread = new Thread(new World(this));
+        world = new World(this);
+        worldThread = new Thread(world);
     }
 
+    /**
+     * Start the world
+     */
+    public void begin(){
+        if(!worldThread.isAlive())
+            worldThread.start(); // Initial run
+        else
+            world.start(); // Unpause
+    }
     /*
-        Starts World's Loop.
+     * Wake up the GUI's thread
     */
-    void start() {
-        worldThread.start();
+    void startGUI() {
+        gui.notify();
     }
-    
-    void stop(){
 
+    /**
+     * Pauses the Thread that the GUI is running on.
+     */
+    void pauseGUI() throws InterruptedException{
+        gui.wait();
+    }
+
+    /**
+     * Wake up the World's thread
+     */
+    void startWorld(){
+        world.start();
+    }
+
+    void pauseWorld() throws InterruptedException{
+        world.pause();
     }
 
     /*
         Clears the JavaFX Canvas
     */
     void clear() {
-        try {
-            Pair<Semaphore, CustomCanvas> canvas = requestCanvas();
-            canvas.getItem1().acquire();
-            canvas.getItem2().clear();
-            canvas.getItem1().release();
-            world.clearActors();
-        } catch(Exception e){
-
-        }
+        requestCanvas().perform(x -> x.clear());
     }
 
     /**
      * Request the canvas as a semaphore
      * @return A semaphore for the canvas
      */
-    public Pair<Semaphore, CustomCanvas> requestCanvas() {
+    public Shared<CustomCanvas> requestCanvas() {
         return gui.requestCanvas();
     }
     
-    public Pair<Semaphore, Text> requestTextPane(){
+    public Shared<Text> requestTextPane(){
         return gui.requestTextPane();
     }
 }

@@ -12,10 +12,10 @@ public abstract class Math {
 
     /**
      * Returns the average of a set of data
-     * @param data The data to use
+     * @param data The data to use. Accepts as vararg
      * @return The average of data
      */
-    public static double average(double[] data){
+    public static double average(double ... data){
         return Arrays.stream(data).reduce(0, (a, b) -> a + b) / data.length;
     }
 

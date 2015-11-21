@@ -1,4 +1,6 @@
-package FivePoints;
+package FivePoints.General;
+
+import FivePoints.Simulation.World;
 
 /**
  *
