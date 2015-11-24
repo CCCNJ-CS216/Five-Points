@@ -46,10 +46,11 @@ public abstract class Lane extends Actor {
      */
     public abstract void Snap();
 
-    protected void progressCars() {
+    protected void updateCars() {
         for (Box box : carCells) {
             if (!box.isEmpty()) {
                 box.vehicle.update();
+                box.vehicle.draw();
             }
         }
     }
@@ -58,8 +59,7 @@ public abstract class Lane extends Actor {
 
         private Vehicle vehicle;
 
-        private Box() {
-        }
+        private Box() {}
 
         private boolean isEmpty() {
             return vehicle == null;
