@@ -55,13 +55,16 @@ public abstract class Lane extends Actor {
         }
     }
 
-    private class Box {
+    /**
+     *A box that Vehicles can be put into
+     */
+    protected class Box {
 
-        private Vehicle vehicle;
+        protected Vehicle vehicle;
 
         private Box() {}
 
-        private boolean isEmpty() {
+        protected boolean isEmpty() {
             return vehicle == null;
         }
 
