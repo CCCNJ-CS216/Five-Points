@@ -47,53 +47,16 @@ public abstract class Lane extends Actor {
     public abstract void Snap();
 
     protected void updateCars() {
-        int i =0;
         for (Box box : carCells) {
             if (!box.isEmpty()) {
                 box.vehicle.update();
-                if(box.vehicle.isReady()){
-                    if(i == 0){
-                        box.vehicle.changeLane();
-                        //TODO:move the car into the intersection
-                    }
-                    else if(carCells.get(i-1).isEmpty()){
-                        carCells.get(i-1).vehicle = box.vehicle;
-                        box.vehicle = null;
-                    }
-                }
                 box.vehicle.draw();
             }
-            i++;
         }
     }
-       /**
-     * Check to see if this car can (and should) move lanes.
-     *
-     * @param ticks The current tick count.
-     */
-//    public void act(int ticks)
-//    {
-//        if(currentLane.getTrafficLight() == null)
-//        {
-//            //TODO: might delete itself and/or report stats
-//        }
-//        else if(currentLane.getTrafficLight().getColor() == LightColor.GREEN)
-//        {
-//            Random rgen = new Random();
-//            if(nextLane.getTrafficLight() == null){
-//                changeLane(ticks);
-//            } else if(nextLane.getTrafficLight().getColor() == LightColor.GREEN){
-//                changeLane(ticks);
-//            } else if(nextLane.getTrafficLight().getColor() == LightColor.YELLOW && rgen.nextBoolean()){
-//                changeLane(ticks);
-//            }
-//        }
-//    }
-
 
     /**
      *A box that Vehicles can be put into
-     * will also contain position information
      */
     protected class Box {
 

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FivePoints.Components;
+package FivePoints.General;
 
-import FivePoints.General.Pair;
+import FivePoints.Components.Lane;
 import java.util.ArrayList;
 
 /**
@@ -32,15 +32,7 @@ public class Route {
     public Lane getLane(int routeIndex) {
         return this.route.get(routeIndex).getItem1();
     }
-    
-    /**
-     * Adds a lane to the list making a route
-     * 
-     * @param lane
-     */
-    public void addStep(Lane lane){
-        route.add(new Pair<>(lane, null));
-    }
+
     /**
      *
      * @param routeIndex
