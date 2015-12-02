@@ -6,7 +6,6 @@
 package FivePoints.Components;
 
 import FivePoints.Simulation.World;
-import FivePoints.General.Route;
 import java.util.Random;
 import java.util.ArrayList;
 
@@ -35,6 +34,7 @@ public class SourceLane extends Lane {
 
     //Temporary just here so code can compile
     private class Intersection {
+        public ArrayList<Lane> getLanes(){return new ArrayList<>();}
     }
 
     /**
@@ -48,6 +48,8 @@ public class SourceLane extends Lane {
         super(world, xpos, ypos);
         this.intersection = intersection;
         totalCars = 0;
+        routes = new ArrayList<>();
+        newRoute = new Route();
         buildRoutes();
     }
 
@@ -56,6 +58,9 @@ public class SourceLane extends Lane {
      */
     private void buildRoutes() {
         //TODO: populate the arraylist of routes
+        newRoute.addStep(this);
+        //Add the rest of the route here
+        routes.add(newRoute);
     }
 
     /**
