@@ -11,7 +11,7 @@ import FivePoints.Simulation.World;
  *
  * @author jd001
  */
-public class EndLane extends Lane{
+public class EndLane extends Lane {
 
     /**
      *
@@ -30,12 +30,18 @@ public class EndLane extends Lane{
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (!carCells.getFirst().isEmpty()) {
+            if (carCells.getFirst().vehicle.isReady()) {
+                //PROBLEM: cant add the dead cars to the dead ators list so i ust permenmently remove them
+                carCells.getFirst().remove();
+            }
+        }
+        updateCars();
     }
 
     @Override
     public void draw() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
