@@ -18,23 +18,21 @@ import java.util.ArrayList;
  */
 public class SourceLane extends Lane {
 
+    private int spawnRate;
+
     private int totalCars;
     /**
      * A blank car
      */
     private Vehicle newVehicle;
     /**
-     * The blank Route
-     */
-    private Route newRoute;
-    /**
+     * /**
      * an ArrayList of all routes build at the constructor and when Snap is
      * called
      */
     private ArrayList<Route> routes;
     //The intersection this lanes is connected to
     private Intersection intersection;
-
 
     /**
      *
@@ -47,8 +45,23 @@ public class SourceLane extends Lane {
         super(world, xpos, ypos);
         this.intersection = intersection;
         totalCars = 0;
-        routes = new ArrayList<>();
-        newRoute = new Route();
+        this.spawnRate = 3;
+        buildRoutes();
+    }
+
+    /**
+     *
+     * @param world
+     * @param xpos
+     * @param ypos
+     * @param intersection
+     * @param spawnRate
+     */
+    public SourceLane(World world, int xpos, int ypos, Intersection intersection, int spawnRate) {
+        super(world, xpos, ypos);
+        this.intersection = intersection;
+        totalCars = 0;
+        this.spawnRate = spawnRate;
         buildRoutes();
     }
 
@@ -56,6 +69,8 @@ public class SourceLane extends Lane {
      * Progresses through the list of lanes and builds all possible routes
      */
     private void buildRoutes() {
+        routes = new ArrayList();
+        Route newRoute = new Route();
         //TODO: populate the arraylist of routes
         newRoute.addStep(this);
         //Add the rest of the route here
@@ -98,7 +113,20 @@ public class SourceLane extends Lane {
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (carCells.getLast().isEmpty()) {
+            Random rand = new Random();
+            if (rand.nextInt(spawnRate) == 0) {
+                //PROBLEM: NO more global time tracking acessable from here
+                this.spawnCar(0);
+            }
+        }
+        //PROBLEM: Lanes can not see their Traffic Lights OR give them cars
+        if (/*THe light is green*/false) {
+            if (!carCells.getFirst().isEmpty() && carCells.getFirst().vehicle.isReady()) {
+                carCells.getFirst().remove();
+            }
+        }
+        updateCars();
     }
 
     @Override

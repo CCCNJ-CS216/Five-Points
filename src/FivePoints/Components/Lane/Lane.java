@@ -33,6 +33,32 @@ public abstract class Lane extends Actor {
     public Lane(World world, int xpos, int ypos) {
         super(world, xpos, ypos);
         //TODO: Depending on the actual Size of the lane create teh linked list with the appropriate amount of boxes
+        //temp just create one of size 3
+        createList(3);
+    }
+
+    /**
+     *
+     * @param world
+     * @param xpos
+     * @param ypos
+     * @param size
+     */
+    public Lane(World world, int xpos, int ypos, int size) {
+        super(world, xpos, ypos);
+        createList(size);
+    }
+
+    /**
+     * Create
+     *
+     * @param size
+     */
+    protected final void createList(int size) {
+        carCells = new LinkedList<>();
+        for (int i = 0; i < size; i++) {
+            carCells.add(new Box());
+        }
     }
 
     /**
@@ -47,19 +73,21 @@ public abstract class Lane extends Actor {
      */
     public abstract void Snap();
 
+    /**
+     * Updates, draws, and moves cars though the lane However a car at the front
+     * of the lane will not be updated
+     */
     protected void updateCars() {
-        int i =0;
+        int i = 0;
         for (Box box : carCells) {
             if (!box.isEmpty()) {
-                box.vehicle.update();
-                if(box.vehicle.isReady()){
-                    if(i == 0){
-                        box.vehicle.changeLane();
-                        //TODO:move the car into the intersection
-                    }
-                    else if(carCells.get(i-1).isEmpty()){
-                        carCells.get(i-1).vehicle = box.vehicle;
-                        box.vehicle = null;
+                if (1 > 0) {
+                    if (carCells.get(i - 1).isEmpty()) {
+                        if (carCells.get(i).vehicle.isReady()) {
+                            carCells.get(i - 1).vehicle = box.vehicle;
+                            box.vehicle = null;
+                        }
+                        box.vehicle.update();
                     }
                 }
                 box.vehicle.draw();
@@ -67,44 +95,49 @@ public abstract class Lane extends Actor {
             i++;
         }
     }
-       /**
+
+    /**
      * Check to see if this car can (and should) move lanes.
      *
      * @param ticks The current tick count.
      */
-//    public void act(int ticks)
-//    {
-//        if(currentLane.getTrafficLight() == null)
-//        {
-//            //TODO: might delete itself and/or report stats
-//        }
-//        else if(currentLane.getTrafficLight().getColor() == LightColor.GREEN)
-//        {
-//            Random rgen = new Random();
-//            if(nextLane.getTrafficLight() == null){
-//                changeLane(ticks);
-//            } else if(nextLane.getTrafficLight().getColor() == LightColor.GREEN){
-//                changeLane(ticks);
-//            } else if(nextLane.getTrafficLight().getColor() == LightColor.YELLOW && rgen.nextBoolean()){
-//                changeLane(ticks);
-//            }
-//        }
-//    }
-
-
+    //    public void act(int ticks)
+    //    {
+    //        if(currentLane.getTrafficLight() == null)
+    //        {
+    //            //TODO: might delete itself and/or report stats
+    //        }
+    //        else if(currentLane.getTrafficLight().getColor() == LightColor.GREEN)
+    //        {
+    //            Random rgen = new Random();
+    //            if(nextLane.getTrafficLight() == null){
+    //                changeLane(ticks);
+    //            } else if(nextLane.getTrafficLight().getColor() == LightColor.GREEN){
+    //                changeLane(ticks);
+    //            } else if(nextLane.getTrafficLight().getColor() == LightColor.YELLOW && rgen.nextBoolean()){
+    //                changeLane(ticks);
+    //            }
+    //        }
+    //    }
     /**
-     *A box that Vehicles can be put into
-     * will also contain position information
+     * A box that Vehicles can be put into will also contain position
+     * information
      */
     protected class Box {
 
         protected Vehicle vehicle;
 
-        private Box() {}
+        private Box() {
+        }
 
         protected boolean isEmpty() {
             return vehicle == null;
         }
 
+        protected Vehicle remove() {
+            Vehicle ret = this.vehicle;
+            this.vehicle = null;
+            return ret;
+        }
     }
 }
