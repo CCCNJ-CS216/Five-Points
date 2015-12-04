@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FivePoints.Components;
+package FivePoints.Components.Lane;
 
+import FivePoints.Components.Intersection.Intersection;
+import FivePoints.Components.Vehicle.Route;
+import FivePoints.Components.Vehicle.Vehicle;
 import FivePoints.Simulation.World;
 import java.util.Random;
 import java.util.ArrayList;
@@ -32,10 +35,6 @@ public class SourceLane extends Lane {
     //The intersection this lanes is connected to
     private Intersection intersection;
 
-    //Temporary just here so code can compile
-    private class Intersection {
-        public ArrayList<Lane> getLanes(){return new ArrayList<>();}
-    }
 
     /**
      *

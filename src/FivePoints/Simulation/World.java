@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import FivePoints.Components.Stats;
-import FivePoints.Components.Vehicle;
+import FivePoints.Components.Vehicle.Vehicle;
 import FivePoints.General.Actor;
 import FivePoints.General.CustomCanvas;
 import FivePoints.Threading.Shared;
@@ -52,6 +52,15 @@ public class World implements Runnable {
         currentActors = new ArrayList<>();
         deadActors = new ArrayList<>();
     }
+
+    /**
+     * Adds an actor to the simulation
+     * @param actor The actor to add
+     */
+    public void addActor(Actor actor){
+        newActors.add(actor);
+    }
+
     /*
         Main Update And Draw loop for actors.
     */

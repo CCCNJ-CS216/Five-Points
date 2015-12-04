@@ -1,7 +1,15 @@
 package FivePoints.Simulation;
 
+import FivePoints.Components.Intersection.Intersection;
+import FivePoints.Components.Intersection.LightConfiguration;
+import FivePoints.Components.Intersection.TrafficLight;
+import FivePoints.Components.Lane.EndLane;
+import FivePoints.Components.Lane.Lane;
+import FivePoints.Components.Lane.SourceLane;
+import FivePoints.General.Pair;
 import FivePoints.Simulation.FivePoints;
 import FivePoints.Threading.Shared;
+import javafx.geometry.Point2D;
 import javafx.scene.text.Text;
 import FivePoints.General.CustomCanvas;
 
@@ -72,6 +80,36 @@ public class Controller {
     */
     void clear() {
         requestCanvas().perform(x -> x.clear());
+    }
+
+    /**
+     * Creates a default scenario of one lane approaching the intersection
+     * from every direction, and adds it to the world.
+     */
+    public void defaultScenario(){
+        Intersection intersection = new Intersection(new Point2D(400, 300), world);
+
+        TrafficLight northLight = new TrafficLight(new LightConfiguration(3, 3, 3), new Point2D(400, 200), world);
+        TrafficLight southLight = new TrafficLight(new LightConfiguration(3, 3, 3), new Point2D(400, 400), world);
+
+        TrafficLight eastLight = new TrafficLight(new LightConfiguration(3, 3, 3), new Point2D(500, 300), world);
+        TrafficLight westLight = new TrafficLight(new LightConfiguration(3, 3, 3), new Point2D(300, 300), world);
+
+        SourceLane northLane = new SourceLane(world, 400, 0, intersection);
+        SourceLane eastLane = new SourceLane(world, 500, 100, intersection);
+
+        EndLane southLane = new EndLane(world, 400, 500);
+        EndLane westLane = new EndLane(world, 0, 500);
+
+        intersection.addBindings(
+                new Pair<TrafficLight, Lane>(northLight, northLane),
+                new Pair<TrafficLight, Lane>(eastLight, eastLane),
+                new Pair<TrafficLight, Lane>(westLight, westLane),
+                new Pair<TrafficLight, Lane>(southLight, southLane)
+        );
+
+        world.addActor(intersection);
+
     }
 
     /**

@@ -1,5 +1,6 @@
-package FivePoints.Components;
+package FivePoints.Components.Vehicle;
 
+import FivePoints.Components.Lane.Lane;
 import FivePoints.General.Actor;
 import FivePoints.Simulation.World;
 

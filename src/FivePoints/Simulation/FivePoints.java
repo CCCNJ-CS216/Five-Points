@@ -25,9 +25,6 @@ public class FivePoints extends Application {
     private Shared<CustomCanvas> canvas;
     private Shared<Text> textPane;
 
-    // Check to see if
-    private final Semaphore available = new Semaphore(1);
-
     //reference to controller
     private Controller controller;
 
@@ -59,10 +56,11 @@ public class FivePoints extends Application {
         */
         Scene scene = new Scene(root);
 
-        primaryStage.setTitle("Traffic Simulation Rewrite 01");
+        primaryStage.setTitle("Five Points Traffic Simulation");
         primaryStage.setScene(scene);
         primaryStage.show();
         controller = new Controller(this);
+        controller.defaultScenario();
     }
 
     /**
