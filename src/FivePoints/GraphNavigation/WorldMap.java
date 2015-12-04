@@ -8,7 +8,7 @@ import FivePoints.General.Actor;
  * When moving a whole object, the translation must only occupy blocks which
  * are free, or else the translation refuses to execute.
  */
-public class WorldMap extends Grid {
+public class WorldMap extends FivePoints.GraphNavigation.Grid {
 
    
 

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FivePoints.Components;
+package FivePoints.Components.Vehicle;
 
+import FivePoints.Components.Lane.Lane;
 import FivePoints.General.Pair;
 import java.util.ArrayList;
 
