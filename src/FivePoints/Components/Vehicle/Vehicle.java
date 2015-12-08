@@ -61,7 +61,7 @@ public class Vehicle extends Actor {
     }
     @Override
     public void draw() {
-        world.requestCanvas().perform(x -> x.drawRect(xpos, ypos, width, height, BLACK));
+        world.requestGraphics().perform(x -> x.drawRect(xpos, ypos, width, height, BLACK));
     }
     
     public boolean isReady(){

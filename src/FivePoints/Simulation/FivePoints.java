@@ -1,20 +1,13 @@
 package FivePoints.Simulation;
 
-import FivePoints.General.CustomCanvas;
+import FivePoints.Graphics.CustomGraphics;
+
 import FivePoints.Threading.Shared;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
-import static javafx.scene.text.TextAlignment.CENTER;
-import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
-import java.util.concurrent.Semaphore;
 
 /**
  *
@@ -22,11 +15,15 @@ import java.util.concurrent.Semaphore;
  */
 public class FivePoints extends Application {
 
-    private Shared<CustomCanvas> canvas;
+    
     private Shared<Text> textPane;
 
     //reference to controller
     private Controller controller;
+    
+  
+    
+    
 
     @Override
     public void start(Stage primaryStage) {
@@ -36,6 +33,7 @@ public class FivePoints extends Application {
             creates Canvas and menubar
             then adds them to root BorderPane
         */
+        /*
         BorderPane root = new BorderPane();
 
         canvas = new Shared<CustomCanvas>(new CustomCanvas(800, 600));
@@ -50,16 +48,24 @@ public class FivePoints extends Application {
 
         root.setLeft(flow);
         root.setTop(createMenu());
-
+*/
         /*
             Creates Maine Scene, Shows Window
         */
-        Scene scene = new Scene(root);
+        controller = new Controller();
+        System.out.println("00");
+        
+        System.out.println("01");
+        Scene scene = new Scene(controller.getRoot());
+        System.out.println("02");
+        
+        System.out.println("yo");
 
         primaryStage.setTitle("Five Points Traffic Simulation");
         primaryStage.setScene(scene);
         primaryStage.show();
-        controller = new Controller(this);
+        
+        
         controller.defaultScenario();
     }
 
@@ -70,6 +76,7 @@ public class FivePoints extends Application {
         launch(args);
     }
 
+    /*
     private MenuBar createMenu() {
         MenuBar menuBar = new MenuBar();
         Menu menuFile = new Menu("File");
@@ -104,11 +111,13 @@ public class FivePoints extends Application {
 
         //return constructed menubar
         return menuBar;
-    }
+    }*/
 
     /*
         Getter Methods
     */
+    
+    /*
     public Shared<CustomCanvas> requestCanvas() {
             return canvas;
     }
@@ -117,4 +126,5 @@ public class FivePoints extends Application {
     public Shared<Text> requestTextPane() {
         return textPane;
     }
+    */
 }

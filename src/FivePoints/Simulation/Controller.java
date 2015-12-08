@@ -12,6 +12,13 @@ import FivePoints.Threading.Shared;
 import javafx.geometry.Point2D;
 import javafx.scene.text.Text;
 import FivePoints.General.CustomCanvas;
+import FivePoints.Graphics.CustomGraphics;
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.layout.BorderPane;
 
 /**
     Controller is the class through which the Gui and the World communicate.
@@ -20,25 +27,53 @@ import FivePoints.General.CustomCanvas;
 */
 public class Controller {
     //reference to gui thread (it doesn't need to be a thread since it is the main thread)
-    private FivePoints gui;
+    
 
     private World world;
     private Thread worldThread;
+    
+    private CustomGraphics graphics;
+    
+    @FXML
+    private BorderPane rootBorderPane;
+    @FXML
+    private Canvas canvas;
 
     /**
      * Make a new controller with a given GUI. This will create a new world.
      * @param gui The FivePoints GUI instance being worked with
      */
-    public Controller(FivePoints gui){
-        this.gui = gui;
+    public Controller(){
+        
         init();
 
     }
     
     //creates world and passes it a JavaFX Canvas
     private void init(){
+        loadFXML();
+        graphics = new CustomGraphics(canvas);
         world = new World(this);
         worldThread = new Thread(world);
+        begin();
+    }
+    
+    private void loadFXML(){
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SceneGraph.fxml"));
+        
+        fxmlLoader.setController(this);
+        System.out.println("loadFXML");
+        try{
+            fxmlLoader.load();
+        }catch (IOException exception){
+            throw new RuntimeException(exception);
+        }
+    }
+    
+    public BorderPane getRoot(){
+        if(rootBorderPane == null)System.out.println("Null BorderPane");
+        return rootBorderPane;
+        
     }
 
     /**
@@ -50,36 +85,24 @@ public class Controller {
         else
             world.start(); // Unpause
     }
-    /*
-     * Wake up the GUI's thread
-    */
-    void startGUI() {
-        gui.notify();
-    }
-
-    /**
-     * Pauses the Thread that the GUI is running on.
-     */
-    void pauseGUI() throws InterruptedException{
-        gui.wait();
-    }
+    
 
     /**
      * Wake up the World's thread
      */
-    void startWorld(){
+    public void startWorld(){
         world.start();
     }
 
-    void pauseWorld() throws InterruptedException{
+    public void pauseWorld() throws InterruptedException{
         world.pause();
     }
 
     /*
         Clears the JavaFX Canvas
     */
-    void clear() {
-        requestCanvas().perform(x -> x.clear());
+    public void clear() {
+        graphics.clear();
     }
 
     /**
@@ -116,11 +139,35 @@ public class Controller {
      * Request the canvas as a semaphore
      * @return A semaphore for the canvas
      */
+    
+    
+    /*
     public Shared<CustomCanvas> requestCanvas() {
         return gui.requestCanvas();
     }
     
     public Shared<Text> requestTextPane(){
         return gui.requestTextPane();
+    }*/
+    
+    public Shared<CustomGraphics> requestGraphics(){
+        return new Shared<CustomGraphics>(graphics);
+    }
+    @FXML
+    private void handleStartAction(final ActionEvent event){
+        startWorld();
+        System.out.println();
+    }
+    
+    /*
+        Tell the controller to stop the sim loop.
+    */
+    @FXML
+    private void handleStopAction(final ActionEvent event){
+        try{
+            pauseWorld();
+        }catch(InterruptedException e){
+            
+        }
     }
 }

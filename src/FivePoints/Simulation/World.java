@@ -7,11 +7,10 @@ import java.util.Random;
 import FivePoints.Components.Stats;
 import FivePoints.Components.Vehicle.Vehicle;
 import FivePoints.General.Actor;
-import FivePoints.General.CustomCanvas;
+import FivePoints.Graphics.CustomGraphics;
 import FivePoints.Threading.Shared;
 
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 
 
 
@@ -114,14 +113,14 @@ public class World implements Runnable {
         //Load image data to be held by World and passed onto objects during construction.
         //OR actors will simply hold a reference to World to get image data.
         Random rand = new Random();
-        /*
+        
         for(int i = 0; i < 100; i++){
             currentActors.add(new Vehicle(this,rand.nextInt(800),rand.nextInt(600)));
         }
-        */
+        
 
-        controller.requestCanvas().perform(x ->
-                x.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent event) -> {
+        controller.requestGraphics().perform(x ->
+                x.getCanvas().addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent event) -> {
                     Actor temp = new Vehicle(getWorld(), (int) event.getX(), (int) event.getY());
                     newActors.add(temp);
                 }));
@@ -146,13 +145,15 @@ public class World implements Runnable {
         paused = false;
     }
 
-    public Shared<CustomCanvas> requestCanvas() {
-        return controller.requestCanvas();
+    public Shared<CustomGraphics> requestGraphics() {
+        return controller.requestGraphics();
     }
 
+    /*
     public Shared<Text> requestTextPane(){
         return controller.requestTextPane();
     }
+    */
 
     public World getWorld(){
         return this;

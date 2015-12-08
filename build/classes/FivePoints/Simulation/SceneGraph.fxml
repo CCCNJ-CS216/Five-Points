@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.canvas.*?>
+
+<BorderPane fx:id="rootBorderPane" prefHeight="720" prefWidth="1280" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" >
+    <stylesheets>
+        <URL value="@scenegraph.css"/>
+    </stylesheets>
+    <left>
+        
+    </left>
+    <right>
+        <Canvas fx:id="canvas"  height="720" width="1280"/>
+    </right>
+    <top>
+        <MenuBar>
+            <menus>
+                <Menu text="File">
+                    <items>
+                        <MenuItem text="Start" onAction="#handleStartAction"/>
+                        <MenuItem text="Stop" onAction="#handleStopAction"/>
+                    </items>
+                </Menu>
+                <Menu text="Edit">
+                    <items>
+                        
+                    </items>
+                </Menu>
+                <Menu text="View">
+                    <items>
+                        
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <bottom>
+        
+    </bottom>
+</BorderPane>

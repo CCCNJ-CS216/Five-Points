@@ -16,18 +16,18 @@ public class Stats {
     
     public Stats(World world){
         this.world = world;
-
+/*
         world.requestTextPane().perform(x -> x.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent event) -> {
             evaluate();
-        }));
+        }));*/
 
     }
-    
+    /*
     public void evaluate(){
         
         ArrayList<Actor> actors = world.getCurrentActors();
         world.requestTextPane().perform(x ->  x.setText("Actors: " + actors.size()));
-    }
+    }*/
     
     
 }
